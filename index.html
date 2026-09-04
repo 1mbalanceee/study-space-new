@@ -34,8 +34,8 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .week-setup button{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border:2px solid rgba(255,255,255,0.6);border-radius:20px;cursor:pointer;background:rgba(255,255,255,0.3);color:var(--text);transition:0.2s;opacity:0.7}
 .week-setup button:hover{opacity:0.9}
 .week-setup button.active{background:#fff;color:#6c5ce7;border-color:#fff;box-shadow:0 4px 12px rgba(108,92,231,0.3);opacity:1;font-weight:800}
-.tabs{display:flex;background:rgba(255,255,255,0.5);border-bottom:1px solid rgba(0,0,0,0.05);overflow-x:auto}
-.tab{flex:1;min-width:80px;padding:12px 8px;text-align:center;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:12px;font-weight:700;border:none;background:transparent;color:var(--muted);transition:all 0.2s;position:relative;white-space:nowrap}
+.tabs{display:flex;background:rgba(255,255,255,0.5);border-bottom:1px solid rgba(0,0,0,0.05)}
+.tab{flex:1;padding:14px;text-align:center;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;border:none;background:transparent;color:var(--muted);transition:all 0.2s;position:relative}
 .tab.active{color:#6c5ce7;background:rgba(255,255,255,0.8)}
 .tab.active::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:3px;background:#6c5ce7;border-radius:3px 3px 0 0}
 .content{padding:20px}
@@ -65,7 +65,6 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .att-btn.present{background:#d4edda;border-color:#95d5b2;color:#155724}
 .att-btn.absent{background:#f8d7da;border-color:#f5c6cb;color:#721c24}
 .att-btn.sick{background:#fff3cd;border-color:#ffeaa7;color:#856404}
-.att-count{font-size:11px;color:var(--muted);margin-top:6px;font-weight:600}
 .empty{text-align:center;color:var(--muted);padding:24px;font-size:15px;font-weight:600;font-style:italic}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(74,78,105,0.4);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal.active{display:flex}
@@ -117,17 +116,6 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .loading-overlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(255,255,255,0.9);display:flex;justify-content:center;align-items:center;z-index:2000;font-family:'Quicksand',sans-serif;font-size:18px;color:#6c5ce7}
 .sync-indicator{position:fixed;top:10px;right:10px;background:rgba(149,213,178,0.9);color:#155724;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;z-index:100;display:none}
 .sync-indicator.saving{display:block}
-.search-box{width:100%;padding:14px 18px;background:#f8f9fc;border:2px solid #e9ecef;border-radius:12px;font-family:'Nunito',sans-serif;font-size:16px;font-weight:600;outline:none;margin-bottom:20px}
-.search-box:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 4px rgba(184,192,255,0.2)}
-.search-result{background:#fff;border-radius:12px;padding:14px;margin-bottom:12px;border-left:4px solid var(--primary);cursor:pointer}
-.search-result:hover{transform:translateX(4px);transition:0.2s}
-.search-result .sr-subject{font-weight:700;color:var(--text);margin-bottom:4px}
-.search-result .sr-meta{font-size:13px;color:var(--muted)}
-.pomo-timer{text-align:center;padding:30px}
-.pomo-display{font-family:'Quicksand',sans-serif;font-size:72px;font-weight:700;color:#6c5ce7;margin:20px 0}
-.pomo-controls{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
-.pomo-stats{margin-top:30px;text-align:left}
-.pomo-stat-row{display:flex;justify-content:space-between;padding:10px;background:#f8f9fc;border-radius:10px;margin-bottom:8px}
 .version-item{background:#f8f9fc;border-radius:10px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
 .version-item button{padding:6px 12px;background:#6c5ce7;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700}
 @media(max-width:600px){body{padding:0;background:#fff}.container{border-radius:0;box-shadow:none;border:none}header h1{font-size:20px}.content{padding:16px}.days-grid{grid-template-columns:1fr}}
@@ -172,16 +160,12 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
     <button class="tab active" data-tab="calendar">Календарь</button>
     <button class="tab" data-tab="today">Сегодня</button>
     <button class="tab" data-tab="editor">Расписание</button>
-    <button class="tab" data-tab="search">Поиск</button>
-    <button class="tab" data-tab="pomo">Pomodoro</button>
     <button class="tab" data-tab="settings">Настройки</button>
   </div>
   <div class="content">
     <div id="calendar" class="tab-content"><div class="days-grid" id="daysGrid"></div></div>
     <div id="today" class="tab-content" style="display:none"><div id="todayContent"></div></div>
     <div id="editor" class="tab-content" style="display:none"><div class="days-grid" id="editorGrid"></div></div>
-    <div id="search" class="tab-content" style="display:none"><div id="searchContent"></div></div>
-    <div id="pomo" class="tab-content" style="display:none"><div id="pomoContent"></div></div>
     <div id="settings" class="tab-content" style="display:none"><div id="settingsContent"></div></div>
   </div>
 </div>
@@ -289,14 +273,13 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 <script>
 // ===== FIREBASE КОНФИГ =====
 const firebaseConfig = {
-  apiKey: "AIzaSyDyYW4TF88AeFohCm_qVQhgNZ1IXxD52bg",
-  authDomain: "study-space-431fb.firebaseapp.com",
-  projectId: "study-space-431fb",
-  storageBucket: "study-space-431fb.firebasestorage.app",
-  messagingSenderId: "898393968408",
-  appId: "1:898393968408:web:ef1295471ad5338f59986d"
+  apiKey: "ТВОЙ_API_KEY",
+  authDomain: "ТВОЙ_PROJECT.firebaseapp.com",
+  projectId: "ТВОЙ_PROJECT_ID",
+  storageBucket: "ТВОЙ_PROJECT.appspot.com",
+  messagingSenderId: "ТВОЙ_SENDER_ID",
+  appId: "ТВОЙ_APP_ID"
 };
-
 
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
@@ -323,7 +306,7 @@ for(let i=1;i<=10;i++){const d=document.createElement('div');d.className='energy
 
 // ===== ДАННЫЕ =====
 let currentUser=null, weekOffset=0, weekAnchor=null, currentEnergy=null, saveTimeout=null;
-let schedule={even:{},odd:{}}, scheduleOverrides={}, lessonNotes={}, dailyReports={}, attendance={}, attendanceLimits={}, pomodoroStats={sessions:[],totalMinutes:0}, versionHistory=[];
+let schedule={even:{},odd:{}}, scheduleOverrides={}, lessonNotes={}, dailyReports={}, attendance={}, attendanceLimits={}, versionHistory=[];
 
 ['even','odd'].forEach(w=>{DAYS.forEach((_,i)=>{if(!schedule[w][i])schedule[w][i]=[]})});
 
@@ -338,7 +321,7 @@ function saveToCloud(){
   saveTimeout=setTimeout(async()=>{
     try{
       await db.collection('users').doc(currentUser.uid).set({
-        schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,pomodoroStats,weekAnchor,
+        schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,weekAnchor,
         updatedAt:firebase.firestore.FieldValue.serverTimestamp()
       },{merge:true});
       console.log('✅ Saved to cloud');
@@ -348,9 +331,8 @@ function saveToCloud(){
 
 function saveLocally(){
   try{
-    const data={schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,pomodoroStats,weekAnchor};
+    const data={schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,weekAnchor};
     localStorage.setItem('study_data',JSON.stringify(data));
-    // История версий (последние 10)
     const snapshot={timestamp:Date.now(),data:JSON.parse(JSON.stringify(data))};
     versionHistory.push(snapshot);
     if(versionHistory.length>10)versionHistory=versionHistory.slice(-10);
@@ -371,7 +353,6 @@ function loadFromLocal(){
       dailyReports=data.dailyReports||{};
       attendance=data.attendance||{};
       attendanceLimits=data.attendanceLimits||{};
-      pomodoroStats=data.pomodoroStats||{sessions:[],totalMinutes:0};
       weekAnchor=data.weekAnchor||null;
     }
     if(v)versionHistory=JSON.parse(v);
@@ -402,7 +383,6 @@ function subscribeToCloud(){
         dailyReports=data.dailyReports||{};
         attendance=data.attendance||{};
         attendanceLimits=data.attendanceLimits||{};
-        pomodoroStats=data.pomodoroStats||{sessions:[],totalMinutes:0};
         weekAnchor=data.weekAnchor||weekAnchor;
         ['even','odd'].forEach(w=>{if(!schedule[w])schedule[w]={};DAYS.forEach((_,i)=>{if(!schedule[w][i])schedule[w][i]=[]})});
         saveLocally();
@@ -464,11 +444,6 @@ function getLessonsForDate(date){
 }
 
 function getAttendanceForLesson(dateKey,lessonId){return attendance[dateKey]?.[lessonId]||null}
-function getSubjectAttendance(subjectName){
-  let present=0,absent=0,sick=0;
-  for(const dk in attendance){for(const lid in attendance[dk]){if(attendance[dk][lid].subjectName===subjectName){if(attendance[dk][lid].status==='present')present++;else if(attendance[dk][lid].status==='absent')absent++;else if(attendance[dk][lid].status==='sick')sick++}}}
-  return {present,absent,sick};
-}
 
 // ===== РЕНДЕР ШАПКИ =====
 function renderHeader(){
@@ -655,98 +630,6 @@ async function saveBaseLesson(){
 }
 async function deleteBaseLesson(weekType,dayIdx,lessonId){if(!confirm('Удалить эту пару из базового расписания?'))return;schedule[weekType][dayIdx]=schedule[weekType][dayIdx].filter(l=>l.id!==lessonId);await saveToCloud();renderEditor();renderCalendar()}
 
-// ===== ПОИСК =====
-function renderSearch(){
-  const container=document.getElementById('searchContent');
-  container.innerHTML=`<input type="text" class="search-box" id="searchInput" placeholder="Поиск по предметам, преподавателям, домашке...">
-  <div id="searchResults"></div>`;
-  document.getElementById('searchInput').addEventListener('input',performSearch);
-}
-function performSearch(){
-  const query=document.getElementById('searchInput').value.toLowerCase().trim();
-  const resultsDiv=document.getElementById('searchResults');
-  if(!query){resultsDiv.innerHTML='<div class="empty">Введи запрос для поиска</div>';return}
-  const results=[];
-  // Поиск по расписанию
-  ['even','odd'].forEach(w=>{DAYS.forEach((day,dayIdx)=>{(schedule[w][dayIdx]||[]).forEach(lesson=>{
-    if(lesson.name?.toLowerCase().includes(query)||lesson.teacher?.toLowerCase().includes(query)){
-      results.push({type:'lesson',subject:lesson.name,meta:`${day} · ${TYPE_LABELS[lesson.type||'lecture']} · ${lesson.teacher||''}`,weekType:w,dayIdx,lessonId:lesson.id})
-    }
-  })})});
-  // Поиск по заметкам
-  for(const dk in lessonNotes){for(const lid in lessonNotes[dk]){const note=lessonNotes[dk][lid];if(note.homework?.toLowerCase().includes(query)){
-    results.push({type:'note',subject:'Домашка',meta:`${dk} · ${note.homework.substring(0,80)}`,dateKey:dk,lessonId:lid})
-  }}}
-  if(results.length===0){resultsDiv.innerHTML='<div class="empty">Ничего не найдено</div>';return}
-  resultsDiv.innerHTML=results.map(r=>`<div class="search-result" onclick="${r.type==='lesson'?`openSearchLesson('${r.weekType}',${r.dayIdx},'${r.lessonId}')`:`openSearchNote('${r.dateKey}','${r.lessonId}')`}"><div class="sr-subject">${r.subject}</div><div class="sr-meta">${r.meta}</div></div>`).join('');
-}
-function openSearchLesson(weekType,dayIdx,lessonId){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.querySelector('[data-tab="editor"]').classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');document.getElementById('editor').style.display='block';openEditorModal(weekType,dayIdx,lessonId)}
-function openSearchNote(dateKey,lessonId){
-  // Найти пару по ID
-  let lesson=null;
-  for(const w of ['even','odd']){for(let i=0;i<7;i++){const l=(schedule[w][i]||[]).find(x=>x.id===lessonId);if(l){lesson=l;break}}if(lesson)break}
-  if(lesson){openNoteModal(lesson,dateKey)}
-}
-
-// ===== POMODORO =====
-let pomoInterval=null,pomoTimeLeft=25*60,pomoIsRunning=false,pomoMode='work',pomoWorkTime=25,pomoBreakTime=5;
-function renderPomo(){
-  const container=document.getElementById('pomoContent');
-  const mins=Math.floor(pomoTimeLeft/60);
-  const secs=pomoTimeLeft%60;
-  container.innerHTML=`
-    <div class="pomo-timer">
-      <h2 style="font-family:'Quicksand';color:#6c5ce7;font-size:24px;margin-bottom:20px">Pomodoro Timer</h2>
-      <div style="font-size:18px;font-weight:700;color:var(--muted);margin-bottom:10px">${pomoMode==='work'?' Работа':'☕ Перерыв'}</div>
-      <div class="pomo-display">${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}</div>
-      <div class="pomo-controls">
-        <button class="btn ${pomoIsRunning?'btn-secondary':'btn-primary'}" onclick="togglePomo()">${pomoIsRunning?'Пауза':'Старт'}</button>
-        <button class="btn btn-secondary" onclick="resetPomo()">Сброс</button>
-      </div>
-      <div style="margin-top:30px;display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:300px;margin-left:auto;margin-right:auto">
-        <div class="form-group"><label>Работа (мин)</label><input type="number" id="pomoWork" value="${pomoWorkTime}" min="1" max="60" onchange="updatePomoSettings()"></div>
-        <div class="form-group"><label>Перерыв (мин)</label><input type="number" id="pomoBreak" value="${pomoBreakTime}" min="1" max="30" onchange="updatePomoSettings()"></div>
-      </div>
-      <div class="pomo-stats">
-        <h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin-bottom:12px">Статистика</h3>
-        <div class="pomo-stat-row"><span>Всего сессий</span><strong>${pomodoroStats.sessions.length}</strong></div>
-        <div class="pomo-stat-row"><span>Всего минут</span><strong>${pomodoroStats.totalMinutes}</strong></div>
-        <button class="btn btn-danger btn-block" onclick="clearPomoStats()" style="margin-top:12px">Очистить статистику</button>
-      </div>
-    </div>
-  `;
-}
-function togglePomo(){
-  if(pomoIsRunning){clearInterval(pomoInterval);pomoIsRunning=false}
-  else{
-    pomoIsRunning=true;
-    pomoInterval=setInterval(()=>{
-      pomoTimeLeft--;
-      if(pomoTimeLeft<=0){
-        clearInterval(pomoInterval);
-        pomoIsRunning=false;
-        if(pomoMode==='work'){
-          pomodoroStats.sessions.push({date:formatDateKey(new Date()),duration:pomoWorkTime});
-          pomodoroStats.totalMinutes+=pomoWorkTime;
-          saveToCloud();
-          pomoMode='break';
-          pomoTimeLeft=pomoBreakTime*60;
-          alert(' Работа завершена! Время перерыва.');
-        }else{
-          pomoMode='work';
-          pomoTimeLeft=pomoWorkTime*60;
-          alert('☕ Перерыв окончен! Пора работать.');
-        }
-      }
-      renderPomo();
-    },1000);
-  }
-  renderPomo();
-}
-function resetPomo(){clearInterval(pomoInterval);pomoIsRunning=false;pomoMode='work';pomoTimeLeft=pomoWorkTime*60;renderPomo()}
-function updatePomoSettings(){pomoWorkTime=parseInt(document.getElementById('pomoWork').value)||25;pomoBreakTime=parseInt(document.getElementById('pomoBreak').value)||5;if(!pomoIsRunning){pomoMode='work';pomoTimeLeft=pomoWorkTime*60;renderPomo()}}
-async function clearPomoStats(){if(!confirm('Очистить статистику Pomodoro?'))return;pomodoroStats={sessions:[],totalMinutes:0};await saveToCloud();renderPomo()}
-
 // ===== НАСТРОЙКИ =====
 function renderSettings(){
   const container=document.getElementById('settingsContent');
@@ -763,16 +646,16 @@ function renderSettings(){
     <p style="margin-top:20px;color:var(--muted);font-size:14px;line-height:1.6;background:#f8f9fc;padding:16px;border-radius:12px;border-left:4px solid var(--primary)">Данные хранятся локально и в облаке. Делай экспорт раз в неделю для резервной копии.</p>
   `;
 }
-function exportData(){const data={schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,pomodoroStats,weekAnchor,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='study-space-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click()}
-function importData(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{try{const data=JSON.parse(ev.target.result);if(data.schedule)schedule=data.schedule;if(data.scheduleOverrides)scheduleOverrides=data.scheduleOverrides;if(data.lessonNotes)lessonNotes=data.lessonNotes;if(data.dailyReports)dailyReports=data.dailyReports;if(data.attendance)attendance=data.attendance;if(data.attendanceLimits)attendanceLimits=data.attendanceLimits;if(data.pomodoroStats)pomodoroStats=data.pomodoroStats;if(data.weekAnchor)weekAnchor=data.weekAnchor;saveToCloud();renderAll();alert('Данные импортированы!')}catch(err){alert('Ошибка импорта: '+err.message)}};reader.readAsText(file)}
-async function clearAllData(){if(!confirm('Удалить ВСЕ данные?'))return;if(!confirm('Точно?'))return;schedule={even:{},odd:{}};scheduleOverrides={};lessonNotes={};dailyReports={};attendance={};attendanceLimits={};pomodoroStats={sessions:[],totalMinutes:0};weekAnchor=null;await saveToCloud();location.reload()}
-function restoreVersion(idx){if(!confirm('Восстановить эту версию? Текущие данные будут заменены.'))return;const v=versionHistory[idx];if(!v)return;schedule=v.data.schedule||schedule;scheduleOverrides=v.data.scheduleOverrides||{};lessonNotes=v.data.lessonNotes||{};dailyReports=v.data.dailyReports||{};attendance=v.data.attendance||{};attendanceLimits=v.data.attendanceLimits||{};pomodoroStats=v.data.pomodoroStats||{sessions:[],totalMinutes:0};weekAnchor=v.data.weekAnchor||null;saveToCloud();renderAll();alert('Версия восстановлена!')}
+function exportData(){const data={schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,weekAnchor,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='study-space-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click()}
+function importData(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{try{const data=JSON.parse(ev.target.result);if(data.schedule)schedule=data.schedule;if(data.scheduleOverrides)scheduleOverrides=data.scheduleOverrides;if(data.lessonNotes)lessonNotes=data.lessonNotes;if(data.dailyReports)dailyReports=data.dailyReports;if(data.attendance)attendance=data.attendance;if(data.attendanceLimits)attendanceLimits=data.attendanceLimits;if(data.weekAnchor)weekAnchor=data.weekAnchor;saveToCloud();renderAll();alert('Данные импортированы!')}catch(err){alert('Ошибка импорта: '+err.message)}};reader.readAsText(file)}
+async function clearAllData(){if(!confirm('Удалить ВСЕ данные?'))return;if(!confirm('Точно?'))return;schedule={even:{},odd:{}};scheduleOverrides={};lessonNotes={};dailyReports={};attendance={};attendanceLimits={};weekAnchor=null;await saveToCloud();location.reload()}
+function restoreVersion(idx){if(!confirm('Восстановить эту версию? Текущие данные будут заменены.'))return;const v=versionHistory[idx];if(!v)return;schedule=v.data.schedule||schedule;scheduleOverrides=v.data.scheduleOverrides||{};lessonNotes=v.data.lessonNotes||{};dailyReports=v.data.dailyReports||{};attendance=v.data.attendance||{};attendanceLimits=v.data.attendanceLimits||{};weekAnchor=v.data.weekAnchor||null;saveToCloud();renderAll();alert('Версия восстановлена!')}
 
 // ===== НАВИГАЦИЯ =====
 function changeWeek(direction){weekOffset+=direction;renderCalendar();renderToday()}
-document.querySelectorAll('.tab').forEach(tab=>{tab.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');document.getElementById(tab.dataset.tab).style.display='block';if(tab.dataset.tab==='calendar')renderCalendar();if(tab.dataset.tab==='today')renderToday();if(tab.dataset.tab==='editor')renderEditor();if(tab.dataset.tab==='search')renderSearch();if(tab.dataset.tab==='pomo')renderPomo();if(tab.dataset.tab==='settings')renderSettings()}});
+document.querySelectorAll('.tab').forEach(tab=>{tab.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');document.getElementById(tab.dataset.tab).style.display='block';if(tab.dataset.tab==='calendar')renderCalendar();if(tab.dataset.tab==='today')renderToday();if(tab.dataset.tab==='editor')renderEditor();if(tab.dataset.tab==='settings')renderSettings()}});
 
-function renderAll(){renderCalendar();renderToday();renderEditor();renderSearch();renderPomo();renderSettings()}
+function renderAll(){renderCalendar();renderToday();renderEditor();renderSettings()}
 
 openDB().then(()=>{console.log('IndexedDB opened');loadFromLocal()});
 </script>
