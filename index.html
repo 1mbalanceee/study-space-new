@@ -288,7 +288,7 @@ const db = firebase.firestore();
 db.settings({cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED});
 
 // ===== КОНСТАНТЫ =====
-const DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота','Воскресенье'];
+const DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
 const TIME_SLOTS = [
   {label:'1 пара · 8:00 - 9:35',time:'8:00 - 9:35'},
   {label:'2 пара · 9:45 - 11:20',time:'9:45 - 11:20'},
@@ -422,7 +422,7 @@ auth.onAuthStateChanged(user=>{
 });
 
 // ===== ДАТЫ =====
-function getWeekDates(offset){const now=new Date();const dow=now.getDay();const dfm=dow===0?6:dow-1;const monday=new Date(now);monday.setDate(now.getDate()-dfm+offset*7);monday.setHours(0,0,0,0);const dates=[];for(let i=0;i<7;i++){const d=new Date(monday);d.setDate(monday.getDate()+i);dates.push(d)}return dates}
+function getWeekDates(offset){const now=new Date();const dow=now.getDay();const dfm=dow===0?6:dow-1;const monday=new Date(now);monday.setDate(now.getDate()-dfm+offset*7);monday.setHours(0,0,0,0);const dates=[];for(let i=0;i<6;i++){const d=new Date(monday);d.setDate(monday.getDate()+i);dates.push(d)}
 function formatDate(date){return date.toLocaleDateString('ru-RU',{day:'numeric',month:'long'})}
 function formatDateKey(date){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
 function getWeekTypeForDate(date){if(!weekAnchor)return null;const anchorDate=new Date(weekAnchor.date+'T00:00:00');const diffDays=Math.round((date.getTime()-anchorDate.getTime())/(1000*60*60*24));const diffWeeks=Math.floor(diffDays/7);return Math.abs(diffWeeks)%2===0?weekAnchor.type:(weekAnchor.type==='even'?'odd':'even')}
@@ -539,8 +539,7 @@ let currentReportDateKey='';
 function renderToday(){
   const today=new Date();
   const todayKey=formatDateKey(today);
-  const dayName=DAYS[today.getDay()===0?6:today.getDay()-1];
-  const report=dailyReports[todayKey];
+  const dayName = DAYS[today.getDay() - 1];  const report=dailyReports[todayKey];
   const container=document.getElementById('todayContent');
   if(!report){container.innerHTML=`<div style="text-align:center;padding:40px 20px"><h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin-bottom:12px">Ещё нет отчёта за сегодня</h3><p style="color:var(--muted);margin-bottom:20px">Заполни отчёт, чтобы отслеживать продуктивность</p><button class="btn btn-primary" onclick="openReportModal('${todayKey}')">Заполнить отчёт</button></div>`}
   else{
