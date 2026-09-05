@@ -61,10 +61,11 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .marker.hw{background:#fff3cd;color:#856404}
 .marker.fl{background:#d4edda;color:#155724}
 .attendance-btns{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
-.att-btn{flex:1;min-width:60px;padding:6px;border:2px solid #e9ecef;border-radius:8px;background:#fff;cursor:pointer;font-size:11px;font-weight:700;font-family:'Nunito',sans-serif;transition:0.2s}
-.att-btn.present{background:#d4edda;border-color:#95d5b2;color:#155724}
-.att-btn.absent{background:#f8d7da;border-color:#f5c6cb;color:#721c24}
-.att-btn.sick{background:#fff3cd;border-color:#ffeaa7;color:#856404}
+.att-btn{flex:1;min-width:60px;padding:6px;border:2px solid #e9ecef;border-radius:8px;background:#fff;cursor:pointer;font-size:11px;font-weight:700;font-family:'Nunito',sans-serif;transition:all 0.2s}
+.att-btn:hover{transform:scale(1.05)}
+.att-btn.present{background:#d4edda;border-color:#95d5b2;color:#155724;font-weight:800;box-shadow:0 2px 8px rgba(149,213,178,0.4)}
+.att-btn.absent{background:#f8d7da;border-color:#f5c6cb;color:#721c24;font-weight:800;box-shadow:0 2px 8px rgba(245,198,203,0.4)}
+.att-btn.sick{background:#fff3cd;border-color:#ffeaa7;color:#856404;font-weight:800;box-shadow:0 2px 8px rgba(255,234,167,0.4)}
 .empty{text-align:center;color:var(--muted);padding:24px;font-size:15px;font-weight:600;font-style:italic}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(74,78,105,0.4);backdrop-filter:blur(4px);z-index:1000;justify-content:center;align-items:center;padding:20px}
 .modal.active{display:flex}
@@ -173,7 +174,6 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 <div class="sync-indicator" id="syncIndicator">Сохранение...</div>
 <div class="loading-overlay" id="loadingOverlay" style="display:none">Загрузка данных...</div>
 
-<!-- Модалки (те же что были) -->
 <div class="modal" id="noteModal">
   <div class="modal-content">
     <h2 id="noteModalTitle">Пара</h2>
@@ -279,6 +279,7 @@ const firebaseConfig = {
   appId: "1:898393968408:web:ef1295471ad5338f59986d"
 };
 
+
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
@@ -323,7 +324,7 @@ function saveToCloud(){
         updatedAt:firebase.firestore.FieldValue.serverTimestamp()
       },{merge:true});
       console.log('✅ Saved to cloud');
-    }catch(err){console.error(' Cloud save error:',err)}
+    }catch(err){console.error('❌ Cloud save error:',err)}
   },500);
 }
 
@@ -488,9 +489,9 @@ function renderCalendar(){
           <div class="lesson-teacher">${lesson.teacher||''}${lesson.room?' · ауд. '+lesson.room:''}</div>
           <div class="lesson-type">${TYPE_LABELS[lesson.type||'lecture']}</div>
           <div class="attendance-btns">
-            <button class="att-btn ${att==='present'?'present':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','present')">Был</button>
-            <button class="att-btn ${att==='absent'?'absent':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','absent')">Прогул</button>
-            <button class="att-btn ${att==='sick'?'sick':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','sick')">Болел</button>
+            <button class="att-btn ${att?.status==='present'?'present':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','present')">✓ Был</button>
+            <button class="att-btn ${att?.status==='absent'?'absent':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','absent')">✗ Прогул</button>
+            <button class="att-btn ${att?.status==='sick'?'sick':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','sick')">🤒 Болел</button>
           </div>
         `;
         div.onclick=()=>openNoteModal(lesson,dateKey);
@@ -551,7 +552,7 @@ function renderToday(){
   if(weekReports.length>0){
     const historyDiv=document.createElement('div');
     historyDiv.innerHTML=`<h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:16px;font-weight:700;margin:24px 0 16px">Отчёты за неделю</h3>`;
-    weekReports.forEach(r=>{const dayIdx=r.date.getDay()===0?6:r.date.getDay()-1;const card=document.createElement('div');card.className='report-card';card.style.cursor='pointer';card.innerHTML=`<div class="report-date">${DAYS[dayIdx]}, ${formatDate(r.date)}</div><div class="report-section"><div class="report-label">Энергия</div><div class="energy-display">${Array.from({length:10},(_,i)=>`<div class="energy-bar-mini ${i<r.report.energy?'filled':''}"></div>`).join('')}</div></div>${r.report.best?`<div class="report-section"><div class="report-label">Лучшее за день</div><div class="report-text">${r.report.best.substring(0,120)}${r.report.best.length>120?'...':''}</div></div>`:''}`;card.onclick=()=>openReportModal(r.key);historyDiv.appendChild(card)});
+    weekReports.forEach(r=>{const dayIdx=r.date.getDay()===0?6:r.date.getDay()-1;const card=document.createElement('div');card.className='report-card';card.style.cursor='pointer';card.innerHTML=`<div class="report-date">${DAYS[dayIdx]||'Суббота'}, ${formatDate(r.date)}</div><div class="report-section"><div class="report-label">Энергия</div><div class="energy-display">${Array.from({length:10},(_,i)=>`<div class="energy-bar-mini ${i<r.report.energy?'filled':''}"></div>`).join('')}</div></div>${r.report.best?`<div class="report-section"><div class="report-label">Лучшее за день</div><div class="report-text">${r.report.best.substring(0,120)}${r.report.best.length>120?'...':''}</div></div>`:''}`;card.onclick=()=>openReportModal(r.key);historyDiv.appendChild(card)});
     container.appendChild(historyDiv);
   }
 }
@@ -636,8 +637,8 @@ function renderSettings(){
   container.innerHTML=`
     <h2 style="font-family:'Quicksand';color:#6c5ce7;font-size:20px;margin-bottom:16px">Настройки</h2>
     <div style="max-width:400px;display:flex;flex-direction:column;gap:12px">
-      <button class="btn btn-primary" onclick="exportData()"> Экспорт данных (JSON)</button>
-      <button class="btn btn-primary" onclick="document.getElementById('importFile').click()">📥 Импорт данных</button>
+      <button class="btn btn-primary" onclick="exportData()">📤 Экспорт данных (JSON)</button>
+      <button class="btn btn-primary" onclick="document.getElementById('importFile').click()"> Импорт данных</button>
       <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
       <button class="btn btn-danger" onclick="clearAllData()">🗑️ Очистить все данные</button>
     </div>
