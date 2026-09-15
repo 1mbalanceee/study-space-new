@@ -3,7 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Study Space</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://www.gstatic.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; connect-src 'self' https://*.firebaseio.com https://*.googleapis.com https://identitytoolkit.googleapis.com; img-src 'self' data: blob:; object-src 'none';">
+<title>Study Space · Самарский Университет</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#6c5ce7">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -23,7 +24,8 @@ body{font-family:'Nunito',sans-serif;background:var(--bg);color:var(--text);min-
 header{background:linear-gradient(135deg,#e0c3fc,#8ec5fc);padding:20px;text-align:center;color:var(--text)}
 header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;margin-bottom:4px}
 .user-info{font-size:13px;color:rgba(74,78,105,0.7);margin-top:4px}
-.logout-btn{background:rgba(239,71,111,0.1);color:var(--danger);border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;margin-top:8px}
+.logout-btn{background:rgba(239,71,111,0.1);color:var(--danger);border:none;padding:6px 14px;border-radius:20px;cursor:pointer;font-size:12px;font-weight:700;margin-top:8px;transition:0.2s}
+.logout-btn:hover{background:rgba(239,71,111,0.2)}
 .week-nav{display:flex;align-items:center;justify-content:center;gap:16px;margin-top:12px}
 .week-nav button{background:rgba(255,255,255,0.5);border:none;width:36px;height:36px;border-radius:50%;cursor:pointer;font-size:18px;color:var(--text);transition:0.2s}
 .week-nav button:hover{background:rgba(255,255,255,0.8)}
@@ -50,8 +52,8 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .lesson.type-practice{border-left-color:#fd79a8}
 .lesson.type-lab{border-left-color:#00b894}
 .lesson-time{font-size:13px;color:#6c5ce7;font-weight:800;letter-spacing:0.5px;margin-bottom:4px}
-.lesson-name{font-size:17px;color:var(--text);font-weight:700;margin-bottom:4px}
-.lesson-teacher{font-size:14px;color:var(--muted);font-weight:600}
+.lesson-name{font-size:16px;color:var(--text);font-weight:700;margin-bottom:4px;line-height:1.3}
+.lesson-teacher{font-size:13px;color:var(--muted);font-weight:600}
 .lesson-type{display:inline-block;font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;margin-top:6px}
 .type-lecture .lesson-type{background:#e8e6ff;color:#6c5ce7}
 .type-practice .lesson-type{background:#ffe0ec;color:#d63384}
@@ -87,7 +89,7 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .energy-dot[data-val="1"]{background:#ffe0e0}.energy-dot[data-val="2"]{background:#ffe8cc}.energy-dot[data-val="3"]{background:#fff5cc}.energy-dot[data-val="4"]{background:#e0ffe0}.energy-dot[data-val="5"]{background:#d0f0ff}.energy-dot[data-val="6"]{background:#d8e8ff}.energy-dot[data-val="7"]{background:#e0d8ff}.energy-dot[data-val="8"]{background:#f0d8ff}.energy-dot[data-val="9"]{background:#ffd8f0}.energy-dot[data-val="10"]{background:#6c5ce7}
 .energy-labels{display:flex;justify-content:space-between;margin-top:6px;font-size:11px;color:var(--muted);font-weight:600}
 .modal-buttons{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
-.btn{flex:1;min-width:100px;padding:14px;border:none;border-radius:12px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;transition:all 0.2s}
+.btn{flex:1;min-width:100px;padding:14px;border:none;border-radius:12px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:15px;font-weight:700;transition:all 0.2s;text-align:center}
 .btn-primary{background:#6c5ce7;color:#fff}.btn-primary:hover{background:#5b4cc4;transform:translateY(-1px)}
 .btn-secondary{background:#f0f0f5;color:var(--text)}.btn-secondary:hover{background:#e2e2ea}
 .btn-danger{background:rgba(239,71,111,0.1);color:var(--danger)}.btn-danger:hover{background:rgba(239,71,111,0.2)}
@@ -97,7 +99,7 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .report-card .report-date{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:700;color:#6c5ce7;margin-bottom:12px}
 .report-card .report-section{margin:12px 0;padding:12px;background:rgba(255,255,255,0.7);border-radius:10px;border-left:3px solid var(--primary)}
 .report-card .report-label{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:6px}
-.report-card .report-text{font-size:15px;color:var(--text);line-height:1.6}
+.report-card .report-text{font-size:15px;color:var(--text);line-height:1.6;white-space:pre-wrap}
 .report-card .energy-display{display:flex;gap:4px;margin-top:4px}
 .report-card .energy-bar-mini{width:24px;height:8px;border-radius:4px;background:#f0f0f5}
 .report-card .energy-bar-mini.filled{background:#6c5ce7}
@@ -119,6 +121,8 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .sync-indicator.saving{display:block}
 .version-item{background:#f8f9fc;border-radius:10px;padding:12px;margin-bottom:8px;display:flex;justify-content:space-between;align-items:center}
 .version-item button{padding:6px 12px;background:#6c5ce7;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700}
+.info-banner{background:#f0f4ff;border-left:4px solid #6c5ce7;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.5;color:#4a4e69}
+.status-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:#d4edda;color:#155724}
 @media(max-width:600px){body{padding:0;background:#fff}.container{border-radius:0;box-shadow:none;border:none}header h1{font-size:20px}.content{padding:16px}.days-grid{grid-template-columns:1fr}}
 </style>
 </head>
@@ -127,14 +131,14 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 <div id="authScreen" class="auth-screen">
   <div class="auth-card">
     <h2>Study Space</h2>
-    <div class="subtitle">Войди или создай аккаунт</div>
+    <div class="subtitle">Самарский университет · Расписание и трекер</div>
     <div class="auth-tabs">
       <button class="auth-tab active" onclick="switchAuthTab('login')">Вход</button>
       <button class="auth-tab" onclick="switchAuthTab('register')">Регистрация</button>
     </div>
     <div class="auth-error" id="authError"></div>
-    <div class="form-group"><label>Email</label><input type="email" id="authEmail"></div>
-    <div class="form-group"><label>Пароль</label><input type="password" id="authPassword"></div>
+    <div class="form-group"><label>Email</label><input type="email" id="authEmail" autocomplete="username"></div>
+    <div class="form-group"><label>Пароль</label><input type="password" id="authPassword" autocomplete="current-password"></div>
     <button class="btn btn-primary btn-block" onclick="handleAuth()" id="authButton">Войти</button>
   </div>
 </div>
@@ -145,12 +149,12 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
     <div class="user-info" id="userInfo">—</div>
     <button class="logout-btn" onclick="logout()">Выйти</button>
     <div class="week-nav">
-      <button onclick="changeWeek(-1)">‹</button>
+      <button onclick="changeWeek(-1)" aria-label="Предыдущая неделя">‹</button>
       <div class="week-info">
         <div class="week-dates" id="weekDates">Загрузка...</div>
         <div class="week-type" id="weekType">—</div>
       </div>
-      <button onclick="changeWeek(1)">›</button>
+      <button onclick="changeWeek(1)" aria-label="Следующая неделя">›</button>
     </div>
     <div class="week-setup">
       <button id="btnSetEven" onclick="setWeekType('even')">Эта неделя — чётная</button>
@@ -174,6 +178,7 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 <div class="sync-indicator" id="syncIndicator">Сохранение...</div>
 <div class="loading-overlay" id="loadingOverlay" style="display:none">Загрузка данных...</div>
 
+<!-- Модалка заметок к паре -->
 <div class="modal" id="noteModal">
   <div class="modal-content">
     <h2 id="noteModalTitle">Пара</h2>
@@ -183,18 +188,18 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
     </div>
     <div class="modal-section">
       <div class="modal-section-title">Домашнее задание</div>
-      <div class="form-group"><textarea id="noteHomework"></textarea></div>
+      <div class="form-group"><textarea id="noteHomework" placeholder="Заметки, дедлайны, задания..."></textarea></div>
     </div>
     <div class="modal-section">
       <div class="modal-section-title">Ссылки</div>
       <div class="form-group">
-        <input type="text" id="newLink">
-        <button class="btn btn-secondary btn-sm" onclick="addLink()" style="margin-top:6px">Добавить ссылку</button>
+        <input type="url" id="newLink" placeholder="https://...">
+        <button class="btn btn-secondary btn-sm" onclick="addLink()" style="margin-top:6px">+ Добавить ссылку</button>
         <div id="linksList" class="links-list"></div>
       </div>
     </div>
     <div class="modal-section">
-      <div class="modal-section-title">Файлы</div>
+      <div class="modal-section-title">Файлы (хранятся локально в браузере)</div>
       <div class="form-group">
         <input type="file" id="fileInput" multiple>
         <div id="filesList" class="files-list"></div>
@@ -207,6 +212,7 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
   </div>
 </div>
 
+<!-- Модалка ежедневного отчета -->
 <div class="modal" id="reportModal">
   <div class="modal-content">
     <h2 id="reportModalTitle">Отчёт за день</h2>
@@ -244,12 +250,13 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
   </div>
 </div>
 
+<!-- Модалка редактора пар -->
 <div class="modal" id="editorModal">
   <div class="modal-content">
     <h2 id="editorModalTitle">Пара</h2>
     <div class="modal-section">
       <div class="modal-section-title">Параметры пары</div>
-      <div class="form-group"><label>Время</label><select id="lessonSlot"></select></div>
+      <div class="form-group"><label>Время (звонки Самарского университета)</label><select id="lessonSlot"></select></div>
       <div class="form-group"><label>Тип занятия</label>
         <select id="lessonType">
           <option value="lecture">Лекция</option>
@@ -257,9 +264,9 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
           <option value="lab">Лабораторная</option>
         </select>
       </div>
-      <div class="form-group"><label>Предмет</label><input type="text" id="lessonName"></div>
-      <div class="form-group"><label>Преподаватель</label><input type="text" id="lessonTeacher"></div>
-      <div class="form-group"><label>Аудитория</label><input type="text" id="lessonRoom"></div>
+      <div class="form-group"><label>Предмет</label><input type="text" id="lessonName" placeholder="Например: Архитектура корпоративных систем"></div>
+      <div class="form-group"><label>Преподаватель</label><input type="text" id="lessonTeacher" placeholder="Например: Гаврилов А.В."></div>
+      <div class="form-group"><label>Аудитория / Примечание</label><input type="text" id="lessonRoom" placeholder="Например: онлайн (3-17 н.) или ауд. 209-1"></div>
     </div>
     <div class="modal-buttons">
       <button class="btn btn-secondary" onclick="closeEditorModal()">Отмена</button>
@@ -269,7 +276,27 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 </div>
 
 <script>
-// ===== FIREBASE КОНФИГ =====
+// ===== XSS SANITIZATION & SAFE HELPERS =====
+function escapeHtml(str) {
+  if (str === null || str === undefined) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+function sanitizeUrl(url) {
+  if (!url) return '#';
+  const trimmed = String(url).trim();
+  if (/^https?:\/\//i.test(trimmed)) {
+    return escapeHtml(trimmed);
+  }
+  return '#';
+}
+
+// ===== FIREBASE КОНФИГ & OFFLINE PERSISTENCE =====
 const firebaseConfig = {
   apiKey: "AIzaSyDyYW4TF88AeFohCm_qVQhgNZ1IXxD52bg",
   authDomain: "study-space-431fb.firebaseapp.com",
@@ -279,222 +306,568 @@ const firebaseConfig = {
   appId: "1:898393968408:web:ef1295471ad5338f59986d"
 };
 
-
 firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 const db = firebase.firestore();
-db.settings({cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED});
 
-// ===== КОНСТАНТЫ =====
-const DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
-const TIME_SLOTS = [
-  {label:'1 пара · 8:00 - 9:35',time:'8:00 - 9:35'},
-  {label:'2 пара · 9:45 - 11:20',time:'9:45 - 11:20'},
-  {label:'3 пара · 11:50 - 13:25',time:'11:50 - 13:25'},
-  {label:'4 пара · 13:35 - 15:10',time:'13:35 - 15:10'},
-  {label:'5 пара · 15:40 - 17:15',time:'15:40 - 17:15'},
-  {label:'6 пара · 17:25 - 19:00',time:'17:25 - 19:00'}
-];
-const TYPE_LABELS = {lecture:'Лекция',practice:'Практика',lab:'Лабораторная'};
-
-const slotSelect = document.getElementById('lessonSlot');
-TIME_SLOTS.forEach((s,i)=>{const o=document.createElement('option');o.value=i;o.textContent=s.label;slotSelect.appendChild(o)});
-
-const energyBar = document.getElementById('energyBar');
-for(let i=1;i<=10;i++){const d=document.createElement('div');d.className='energy-dot';d.dataset.val=i;d.onclick=()=>selectEnergy(i);energyBar.appendChild(d)}
-
-// ===== ДАННЫЕ =====
-let currentUser=null, weekOffset=0, weekAnchor=null, currentEnergy=null, saveTimeout=null;
-let schedule={even:{},odd:{}}, scheduleOverrides={}, lessonNotes={}, dailyReports={}, attendance={}, attendanceLimits={}, versionHistory=[];
-
-['even','odd'].forEach(w=>{DAYS.forEach((_,i)=>{if(!schedule[w][i])schedule[w][i]=[]})});
-
-function generateId(){return 'id_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2,7)}
-
-// ===== СОХРАНЕНИЕ =====
-function saveToCloud(){
-  if(!currentUser){saveLocally();return}
-  showSync();
-  saveLocally();
-  clearTimeout(saveTimeout);
-  saveTimeout=setTimeout(async()=>{
-    try{
-      await db.collection('users').doc(currentUser.uid).set({
-        schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,weekAnchor,
-        updatedAt:firebase.firestore.FieldValue.serverTimestamp()
-      },{merge:true});
-      console.log('✅ Saved to cloud');
-    }catch(err){console.error('❌ Cloud save error:',err)}
-  },500);
-}
-
-function saveLocally(){
-  try{
-    const data={schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,weekAnchor};
-    localStorage.setItem('study_data',JSON.stringify(data));
-    const snapshot={timestamp:Date.now(),data:JSON.parse(JSON.stringify(data))};
-    versionHistory.push(snapshot);
-    if(versionHistory.length>10)versionHistory=versionHistory.slice(-10);
-    localStorage.setItem('study_versions',JSON.stringify(versionHistory));
-    console.log('💾 Saved locally');
-  }catch(err){console.error('Local save error:',err)}
-}
-
-function loadFromLocal(){
-  try{
-    const d=localStorage.getItem('study_data');
-    const v=localStorage.getItem('study_versions');
-    if(d){
-      const data=JSON.parse(d);
-      schedule=data.schedule||schedule;
-      scheduleOverrides=data.scheduleOverrides||{};
-      lessonNotes=data.lessonNotes||{};
-      dailyReports=data.dailyReports||{};
-      attendance=data.attendance||{};
-      attendanceLimits=data.attendanceLimits||{};
-      weekAnchor=data.weekAnchor||null;
+// Активируем безлимитный кэш и офлайн-сохранение Firestore
+try {
+  db.settings({ cacheSizeBytes: firebase.firestore.CACHE_SIZE_UNLIMITED });
+  db.enablePersistence({ synchronizeTabs: true }).then(() => {
+    console.log('✅ Firestore offline persistence enabled');
+  }).catch(err => {
+    if (err.code === 'failed-precondition') {
+      console.warn('Firestore persistence limited to single tab');
+    } else {
+      console.warn('Firestore persistence error:', err);
     }
-    if(v)versionHistory=JSON.parse(v);
-    ['even','odd'].forEach(w=>{if(!schedule[w])schedule[w]={};DAYS.forEach((_,i)=>{if(!schedule[w][i])schedule[w][i]=[]})});
-    console.log('📦 Loaded from local');
-  }catch(err){console.error('Local load error:',err)}
+  });
+} catch(e) {
+  console.warn('Error enabling Firestore persistence:', e);
 }
 
-function showLoading(){document.getElementById('loadingOverlay').style.display='flex'}
-function hideLoading(){document.getElementById('loadingOverlay').style.display='none'}
-function showSync(){const i=document.getElementById('syncIndicator');i.classList.add('saving');setTimeout(()=>i.classList.remove('saving'),1500)}
+// Запрос постоянного хранилища браузера (предотвращает удаление LocalStorage/IndexedDB при нехватке места)
+let isPersistentStorageGranted = false;
+async function requestStoragePersistence() {
+  if (navigator.storage && navigator.storage.persist) {
+    try {
+      isPersistentStorageGranted = await navigator.storage.persisted();
+      if (!isPersistentStorageGranted) {
+        isPersistentStorageGranted = await navigator.storage.persist();
+      }
+      console.log('🛡️ Storage persistence granted:', isPersistentStorageGranted);
+    } catch(e) {
+      console.warn('Storage persistence request failed:', e);
+    }
+  }
+}
 
-function subscribeToCloud(){
-  if(!currentUser)return;
+// ===== КОНСТАНТЫ РАСПИСАНИЯ САМАРСКОГО УНИВЕРСИТЕТА =====
+const DAYS = ['Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'];
+
+// Точные звонки Самарского университета (по PDF расписанию)
+const TIME_SLOTS = [
+  { label: '1 пара · 08:00 - 09:35', time: '08:00 - 09:35' },
+  { label: '2 пара · 09:45 - 11:20', time: '09:45 - 11:20' },
+  { label: '3 пара · 11:30 - 13:05', time: '11:30 - 13:05' },
+  { label: '4 пара · 13:30 - 15:05', time: '13:30 - 15:05' },
+  { label: '5 пара · 15:15 - 16:50', time: '15:15 - 16:50' },
+  { label: '6 пара · 17:00 - 18:35', time: '17:00 - 18:35' },
+  { label: '7 пара · 18:45 - 20:15', time: '18:45 - 20:15' },
+  { label: '8 пара · 20:25 - 21:55', time: '20:25 - 21:55' }
+];
+
+const TYPE_LABELS = { lecture: 'Лекция', practice: 'Практика', lab: 'Лабораторная' };
+
+// Заполнение выпадающего списка слотов
+const slotSelect = document.getElementById('lessonSlot');
+TIME_SLOTS.forEach((s, i) => {
+  const o = document.createElement('option');
+  o.value = i;
+  o.textContent = s.label;
+  slotSelect.appendChild(o);
+});
+
+// Шкала энергии
+const energyBar = document.getElementById('energyBar');
+for (let i = 1; i <= 10; i++) {
+  const d = document.createElement('div');
+  d.className = 'energy-dot';
+  d.dataset.val = i;
+  d.onclick = () => selectEnergy(i);
+  energyBar.appendChild(d);
+}
+
+// ===== ДАННЫЕ ПО УМОЛЧАНИЮ (ИЗ PDF: ГРУППА 6131-010402D, 2026/2027) =====
+const DEFAULT_WEEK_ANCHOR = { date: '2026-08-31', type: 'odd' }; // 1-я неделя с 31.08.2026 — нечётная
+
+function getDefaultSchedule() {
+  return {
+    odd: {
+      0: [
+        { id: 'ssau_odd_0_5', slot: 5, time: '17:00 - 18:35', type: 'lecture', name: 'Инновационное предпринимательство', teacher: 'Цапенко М.В.', room: 'онлайн (15 н.)' }
+      ],
+      1: [],
+      2: [
+        { id: 'ssau_odd_2_2', slot: 2, time: '11:30 - 13:05', type: 'lab', name: 'Технологии математического моделирования', teacher: 'Быков Д.А.', room: '209-1 (5-15 н.)' },
+        { id: 'ssau_odd_2_3', slot: 3, time: '13:30 - 15:05', type: 'lab', name: 'Технологии математического моделирования', teacher: 'Быков Д.А.', room: '209-1 (5-15 н.)' },
+        { id: 'ssau_odd_2_4', slot: 4, time: '15:15 - 16:50', type: 'lab', name: 'Искусственный интеллект и машинное обучение', teacher: 'Вакансия', room: '203-1 (3-17 н.)' },
+        { id: 'ssau_odd_2_5', slot: 5, time: '17:00 - 18:35', type: 'lab', name: 'Искусственный интеллект и машинное обучение', teacher: 'Вакансия', room: '203-1 (3-17 н.)' }
+      ],
+      3: [
+        { id: 'ssau_odd_3_2', slot: 2, time: '11:30 - 13:05', type: 'lab', name: 'Иностранный язык', teacher: 'Толстова Т.В.', room: 'онлайн (3-15 н.)' },
+        { id: 'ssau_odd_3_3', slot: 3, time: '13:30 - 15:05', type: 'lecture', name: 'Визуализация данных (Data Visualization)', teacher: 'Петров М.В.', room: 'онлайн (3-13 н.)' },
+        { id: 'ssau_odd_3_4', slot: 4, time: '15:15 - 16:50', type: 'lecture', name: 'Архитектура корпоративных систем', teacher: 'Гаврилов А.В.', room: 'онлайн (3-17 н.)' },
+        { id: 'ssau_odd_3_5', slot: 5, time: '17:00 - 18:35', type: 'lecture', name: 'Технологии математического моделирования', teacher: 'Быков Д.А.', room: 'онлайн (3-13 н.)' }
+      ],
+      4: [
+        { id: 'ssau_odd_4_3', slot: 3, time: '13:30 - 15:05', type: 'lecture', name: 'Инновационное предпринимательство', teacher: 'Цапенко М.В.', room: 'онлайн (11 н.)' },
+        { id: 'ssau_odd_4_4', slot: 4, time: '15:15 - 16:50', type: 'lab', name: 'Визуализация данных (Data Visualization)', teacher: 'Петров М.В.', room: 'онлайн (3-15 н., п/гр 1)' },
+        { id: 'ssau_odd_4_5', slot: 5, time: '17:00 - 18:35', type: 'lab', name: 'Визуализация данных (Data Visualization)', teacher: 'Петров М.В.', room: 'онлайн (3-13 н., п/гр 1)' }
+      ],
+      5: []
+    },
+    even: {
+      0: [
+        { id: 'ssau_even_0_3', slot: 3, time: '13:30 - 15:05', type: 'lecture', name: 'Искусственный интеллект и машинное обучение', teacher: 'Куприянов А.В.', room: 'онлайн (4-18 н.)' },
+        { id: 'ssau_even_0_4', slot: 4, time: '15:15 - 16:50', type: 'lecture', name: 'Методы оптимизации в машинном обучении', teacher: 'Котов А.П.', room: 'онлайн (2-16 н.)' },
+        { id: 'ssau_even_0_5', slot: 5, time: '17:00 - 18:35', type: 'lecture', name: 'Инновационное предпринимательство', teacher: 'Цапенко М.В.', room: 'онлайн (14-18 н.)' }
+      ],
+      1: [
+        { id: 'ssau_even_1_2', slot: 2, time: '11:30 - 13:05', type: 'lab', name: 'Методы оптимизации в машинном обучении', teacher: 'Котов А.П.', room: '220-1 (4-14 н.)' },
+        { id: 'ssau_even_1_3', slot: 3, time: '13:30 - 15:05', type: 'lab', name: 'Методы оптимизации в машинном обучении', teacher: 'Котов А.П.', room: '220-1 (4-14 н.)' },
+        { id: 'ssau_even_1_5', slot: 5, time: '17:00 - 18:35', type: 'practice', name: 'Инновационное предпринимательство', teacher: 'Цапенко М.В.', room: 'онлайн (12-20 н.)' }
+      ],
+      2: [],
+      3: [
+        { id: 'ssau_even_3_2', slot: 2, time: '11:30 - 13:05', type: 'lab', name: 'Иностранный язык', teacher: 'Толстова Т.В.', room: 'онлайн (2-14 н.)' },
+        { id: 'ssau_even_3_3', slot: 3, time: '13:30 - 15:05', type: 'lecture', name: 'Визуализация данных (Data Visualization)', teacher: 'Петров М.В.', room: 'онлайн (2-12 н.)' },
+        { id: 'ssau_even_3_4', slot: 4, time: '15:15 - 16:50', type: 'lecture', name: 'Архитектура корпоративных систем', teacher: 'Гаврилов А.В.', room: 'онлайн (2-16 н.)' },
+        { id: 'ssau_even_3_5', slot: 5, time: '17:00 - 18:35', type: 'lecture', name: 'Технологии математического моделирования', teacher: 'Быков Д.А.', room: 'онлайн (2-12 н.)' }
+      ],
+      4: [],
+      5: []
+    }
+  };
+}
+
+// ===== СОСТОЯНИЕ ПРИЛОЖЕНИЯ =====
+let currentUser = null, weekOffset = 0, weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR)), currentEnergy = null, saveTimeout = null;
+let schedule = getDefaultSchedule(), scheduleOverrides = {}, lessonNotes = {}, dailyReports = {}, attendance = {}, attendanceLimits = {}, versionHistory = [];
+
+function ensureScheduleStructure() {
+  if (!schedule || typeof schedule !== 'object') schedule = { even: {}, odd: {} };
+  ['even', 'odd'].forEach(w => {
+    if (!schedule[w]) schedule[w] = {};
+    DAYS.forEach((_, i) => {
+      if (!Array.isArray(schedule[w][i])) schedule[w][i] = [];
+    });
+  });
+}
+ensureScheduleStructure();
+
+function isScheduleEmpty(sch = schedule) {
+  if (!sch || !sch.even || !sch.odd) return true;
+  let count = 0;
+  ['even', 'odd'].forEach(w => {
+    if (sch[w]) {
+      Object.values(sch[w]).forEach(list => {
+        if (Array.isArray(list)) count += list.length;
+      });
+    }
+  });
+  return count === 0;
+}
+
+function generateId() {
+  return 'id_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2, 7);
+}
+
+// Изоляция данных в LocalStorage по аккаунту (защита от утечки между пользователями)
+function getStorageKey() {
+  return currentUser ? `study_data_${currentUser.uid}` : 'study_data_guest';
+}
+function getVersionsKey() {
+  return currentUser ? `study_versions_${currentUser.uid}` : 'study_versions_guest';
+}
+
+// ===== СОХРАНЕНИЕ & СИНХРОНИЗАЦИЯ =====
+function saveLocally() {
+  try {
+    const updatedAt = Date.now();
+    const data = {
+      schedule, scheduleOverrides, lessonNotes, dailyReports,
+      attendance, attendanceLimits, weekAnchor,
+      updatedAt
+    };
+    localStorage.setItem(getStorageKey(), JSON.stringify(data));
+    
+    // Резервная история версий
+    const snapshot = { timestamp: updatedAt, data: JSON.parse(JSON.stringify(data)) };
+    versionHistory.push(snapshot);
+    if (versionHistory.length > 20) versionHistory = versionHistory.slice(-20);
+    localStorage.setItem(getVersionsKey(), JSON.stringify(versionHistory));
+    
+    console.log('💾 Saved locally at', new Date(updatedAt).toLocaleTimeString());
+    return updatedAt;
+  } catch(err) {
+    console.error('Local save error:', err);
+    return Date.now();
+  }
+}
+
+function saveToCloud() {
+  showSync();
+  const localTs = saveLocally();
+  if (!currentUser) return;
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(async () => {
+    try {
+      await db.collection('users').doc(currentUser.uid).set({
+        schedule, scheduleOverrides, lessonNotes, dailyReports,
+        attendance, attendanceLimits, weekAnchor,
+        updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+        updatedAtMs: localTs
+      }, { merge: true });
+      console.log('✅ Cloud save successful');
+    } catch(err) {
+      console.error('❌ Cloud save error:', err);
+    }
+  }, 400);
+}
+
+function loadFromLocal() {
+  try {
+    const raw = localStorage.getItem(getStorageKey()) || localStorage.getItem('study_data');
+    const rawV = localStorage.getItem(getVersionsKey()) || localStorage.getItem('study_versions');
+    let loaded = false;
+    if (raw) {
+      const data = JSON.parse(raw);
+      if (data && (data.schedule || data.weekAnchor)) {
+        schedule = data.schedule || schedule;
+        scheduleOverrides = data.scheduleOverrides || {};
+        lessonNotes = data.lessonNotes || {};
+        dailyReports = data.dailyReports || {};
+        attendance = data.attendance || {};
+        attendanceLimits = data.attendanceLimits || {};
+        weekAnchor = data.weekAnchor || weekAnchor;
+        loaded = true;
+      }
+    }
+    if (rawV) {
+      try { versionHistory = JSON.parse(rawV) || []; } catch(e) {}
+    }
+    ensureScheduleStructure();
+    
+    // Если расписание пустое — заполняем базовое расписание Самарского университета
+    if (!loaded || isScheduleEmpty()) {
+      schedule = getDefaultSchedule();
+      weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR));
+      saveLocally();
+    }
+    console.log('📦 Loaded from local storage');
+  } catch(err) {
+    console.error('Local load error:', err);
+    ensureScheduleStructure();
+  }
+}
+
+function showLoading() { document.getElementById('loadingOverlay').style.display = 'flex'; }
+function hideLoading() { document.getElementById('loadingOverlay').style.display = 'none'; }
+function showSync() {
+  const i = document.getElementById('syncIndicator');
+  i.classList.add('saving');
+  setTimeout(() => i.classList.remove('saving'), 1500);
+}
+
+// Надёжная двухсторонняя синхронизация без перезаписи облака старыми данными
+function subscribeToCloud() {
+  if (!currentUser) return;
   loadFromLocal();
-  const localTimestamp=Date.now();
-  db.collection('users').doc(currentUser.uid).onSnapshot(doc=>{
-    console.log('Cloud snapshot:',doc.exists);
-    if(doc.exists){
-      const data=doc.data();
-      const cloudUpdatedAt=data.updatedAt?.toMillis()||0;
-      const hasLocalData=localStorage.getItem('study_data');
-      if(!hasLocalData||(data.schedule&&cloudUpdatedAt>localTimestamp)){
-        console.log('Loading from cloud');
-        schedule=data.schedule||schedule;
-        scheduleOverrides=data.scheduleOverrides||{};
-        lessonNotes=data.lessonNotes||{};
-        dailyReports=data.dailyReports||{};
-        attendance=data.attendance||{};
-        attendanceLimits=data.attendanceLimits||{};
-        weekAnchor=data.weekAnchor||weekAnchor;
-        ['even','odd'].forEach(w=>{if(!schedule[w])schedule[w]={};DAYS.forEach((_,i)=>{if(!schedule[w][i])schedule[w][i]=[]})});
-        saveLocally();
-      }else{console.log('Keeping local data')}
-    }else{loadFromLocal()}
-    renderAll();hideLoading();
-  },err=>{console.error('Subscribe error:',err);loadFromLocal();renderAll();hideLoading()});
+  requestStoragePersistence();
+
+  const userDocRef = db.collection('users').doc(currentUser.uid);
+  
+  userDocRef.onSnapshot(doc => {
+    if (doc.exists) {
+      const cloudData = doc.data();
+      const cloudUpdatedAt = (cloudData.updatedAt && cloudData.updatedAt.toMillis) ? cloudData.updatedAt.toMillis() : (cloudData.updatedAtMs || 0);
+      
+      const localRaw = localStorage.getItem(getStorageKey());
+      let localUpdatedAt = 0;
+      if (localRaw) {
+        try {
+          const parsed = JSON.parse(localRaw);
+          localUpdatedAt = parsed.updatedAt || 0;
+        } catch(e) {}
+      }
+
+      const localIsEmpty = isScheduleEmpty();
+      const cloudHasSchedule = cloudData.schedule && !isScheduleEmpty(cloudData.schedule);
+
+      // Если в облаке данные новее, или локально пусто, а в облаке есть данные — берем облачные
+      if (cloudUpdatedAt > localUpdatedAt || (localIsEmpty && cloudHasSchedule) || !localRaw) {
+        console.log('📥 Синхронизация: загрузка свежих данных из облака');
+        schedule = cloudData.schedule || schedule;
+        scheduleOverrides = cloudData.scheduleOverrides || {};
+        lessonNotes = cloudData.lessonNotes || {};
+        dailyReports = cloudData.dailyReports || {};
+        attendance = cloudData.attendance || {};
+        attendanceLimits = cloudData.attendanceLimits || {};
+        weekAnchor = cloudData.weekAnchor || weekAnchor;
+        ensureScheduleStructure();
+
+        const toSave = {
+          schedule, scheduleOverrides, lessonNotes, dailyReports,
+          attendance, attendanceLimits, weekAnchor,
+          updatedAt: cloudUpdatedAt || Date.now()
+        };
+        localStorage.setItem(getStorageKey(), JSON.stringify(toSave));
+      } else if (localUpdatedAt > cloudUpdatedAt && !localIsEmpty) {
+        console.log('📤 Синхронизация: отправка локальных изменений в облако');
+        saveToCloud();
+      }
+    } else {
+      console.log('Документ пользователя в облаке еще не создан. Сохраняем начальные данные.');
+      saveToCloud();
+    }
+    renderAll();
+    hideLoading();
+  }, err => {
+    console.error('Ошибка подписки на облако:', err);
+    loadFromLocal();
+    renderAll();
+    hideLoading();
+  });
+}
+
+// Загрузка расписания из учебного плана (по кнопке)
+function loadPdfTemplate() {
+  if (!confirm('Загрузить расписание группы 6131-010402D (2026/2027) из учебного плана?\nТекущее расписание будет обновлено базовыми предметами.')) return;
+  schedule = getDefaultSchedule();
+  weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR));
+  saveToCloud();
+  renderAll();
+  alert('Расписание Самарского университета успешно загружено!');
 }
 
 // ===== АВТОРИЗАЦИЯ =====
-let authMode='login';
-function switchAuthTab(mode){authMode=mode;document.querySelectorAll('.auth-tab').forEach(t=>t.classList.remove('active'));event.target.classList.add('active');document.getElementById('authButton').textContent=mode==='login'?'Войти':'Создать аккаунт';document.getElementById('authError').style.display='none'}
-async function handleAuth(){
-  const email=document.getElementById('authEmail').value.trim();
-  const password=document.getElementById('authPassword').value;
-  const errorDiv=document.getElementById('authError');
-  if(!email||!password){errorDiv.textContent='Введи email и пароль';errorDiv.style.display='block';return}
-  try{
-    if(authMode==='login')await auth.signInWithEmailAndPassword(email,password);
-    else await auth.createUserWithEmailAndPassword(email,password);
-  }catch(err){
-    let msg='Ошибка';
-    if(err.code==='auth/user-not-found')msg='Пользователь не найден';
-    else if(err.code==='auth/wrong-password')msg='Неверный пароль';
-    else if(err.code==='auth/email-already-in-use')msg='Email уже занят';
-    else if(err.code==='auth/weak-password')msg='Пароль слишком короткий (мин. 6 символов)';
-    else if(err.code==='auth/invalid-email')msg='Неверный email';
-    else msg=err.message;
-    errorDiv.textContent=msg;errorDiv.style.display='block';
+let authMode = 'login';
+function switchAuthTab(mode) {
+  authMode = mode;
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+  event.target.classList.add('active');
+  document.getElementById('authButton').textContent = mode === 'login' ? 'Войти' : 'Создать аккаунт';
+  document.getElementById('authError').style.display = 'none';
+}
+
+async function handleAuth() {
+  const email = document.getElementById('authEmail').value.trim();
+  const password = document.getElementById('authPassword').value;
+  const errorDiv = document.getElementById('authError');
+  if (!email || !password) {
+    errorDiv.textContent = 'Введи email и пароль';
+    errorDiv.style.display = 'block';
+    return;
+  }
+  try {
+    if (authMode === 'login') {
+      await auth.signInWithEmailAndPassword(email, password);
+    } else {
+      await auth.createUserWithEmailAndPassword(email, password);
+    }
+  } catch(err) {
+    // Безопасное сообщение об ошибке (защита от user enumeration)
+    let msg = 'Ошибка авторизации. Проверь введенные данные.';
+    if (err.code === 'auth/weak-password') {
+      msg = 'Пароль слишком короткий (минимум 6 символов)';
+    } else if (err.code === 'auth/invalid-email') {
+      msg = 'Некорректный формат email';
+    } else if (err.code === 'auth/email-already-in-use') {
+      msg = 'Пользователь с таким email уже зарегистрирован';
+    } else if (err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') {
+      msg = 'Неверный email или пароль';
+    }
+    errorDiv.textContent = msg;
+    errorDiv.style.display = 'block';
   }
 }
-async function logout(){if(!confirm('Выйти из аккаунта?'))return;await auth.signOut()}
-auth.onAuthStateChanged(user=>{
-  if(user){currentUser=user;document.getElementById('authScreen').style.display='none';document.getElementById('appContainer').style.display='block';document.getElementById('userInfo').textContent=user.email;showLoading();subscribeToCloud()}
-  else{currentUser=null;document.getElementById('authScreen').style.display='flex';document.getElementById('appContainer').style.display='none'}
+
+async function logout() {
+  if (!confirm('Выйти из аккаунта?')) return;
+  await auth.signOut();
+  currentUser = null;
+  // Сброс данных в памяти для предотвращения утечки
+  schedule = getDefaultSchedule();
+  scheduleOverrides = {};
+  lessonNotes = {};
+  dailyReports = {};
+  attendance = {};
+  attendanceLimits = {};
+  weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR));
+  versionHistory = [];
+  renderAll();
+}
+
+auth.onAuthStateChanged(user => {
+  if (user) {
+    currentUser = user;
+    document.getElementById('authScreen').style.display = 'none';
+    document.getElementById('appContainer').style.display = 'block';
+    document.getElementById('userInfo').textContent = user.email;
+    showLoading();
+    subscribeToCloud();
+  } else {
+    currentUser = null;
+    document.getElementById('authScreen').style.display = 'flex';
+    document.getElementById('appContainer').style.display = 'none';
+  }
 });
 
-// ===== ДАТЫ =====
-function getWeekDates(offset){const now=new Date();const dow=now.getDay();const dfm=dow===0?6:dow-1;const monday=new Date(now);monday.setDate(now.getDate()-dfm+offset*7);monday.setHours(0,0,0,0);const dates=[];for(let i=0;i<6;i++){const d=new Date(monday);d.setDate(monday.getDate()+i);dates.push(d)}return dates}
-function formatDate(date){return date.toLocaleDateString('ru-RU',{day:'numeric',month:'long'})}
-function formatDateKey(date){const y=date.getFullYear(),m=String(date.getMonth()+1).padStart(2,'0'),d=String(date.getDate()).padStart(2,'0');return `${y}-${m}-${d}`}
-function getWeekTypeForDate(date){if(!weekAnchor)return null;const anchorDate=new Date(weekAnchor.date+'T00:00:00');const diffDays=Math.round((date.getTime()-anchorDate.getTime())/(1000*60*60*24));const diffWeeks=Math.floor(diffDays/7);return Math.abs(diffWeeks)%2===0?weekAnchor.type:(weekAnchor.type==='even'?'odd':'even')}
-async function setWeekType(type){const dates=getWeekDates(0);weekAnchor={date:formatDateKey(dates[0]),type};await saveToCloud();renderAll()}
+// ===== ДАТЫ & КАЛЕНДАРЬ =====
+function getWeekDates(offset) {
+  const now = new Date();
+  const dow = now.getDay();
+  const dfm = dow === 0 ? 6 : dow - 1;
+  const monday = new Date(now);
+  monday.setDate(now.getDate() - dfm + offset * 7);
+  monday.setHours(0, 0, 0, 0);
+  const dates = [];
+  for (let i = 0; i < 6; i++) {
+    const d = new Date(monday);
+    d.setDate(monday.getDate() + i);
+    dates.push(d);
+  }
+  return dates;
+}
+
+function formatDate(date) {
+  return date.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long' });
+}
+
+function formatDateKey(date) {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${y}-${m}-${d}`;
+}
+
+function getWeekTypeForDate(date) {
+  if (!weekAnchor || !weekAnchor.date) return null;
+  const anchorDate = new Date(weekAnchor.date + 'T00:00:00');
+  const diffDays = Math.round((date.getTime() - anchorDate.getTime()) / (1000 * 60 * 60 * 24));
+  const diffWeeks = Math.floor(diffDays / 7);
+  const isSameParity = Math.abs(diffWeeks) % 2 === 0;
+  return isSameParity ? weekAnchor.type : (weekAnchor.type === 'even' ? 'odd' : 'even');
+}
+
+async function setWeekType(type) {
+  const dates = getWeekDates(weekOffset);
+  weekAnchor = { date: formatDateKey(dates[0]), type };
+  saveToCloud();
+  renderAll();
+}
 
 // ===== INDEXEDDB ДЛЯ ФАЙЛОВ =====
 let idb;
-function openDB(){return new Promise((res,rej)=>{const req=indexedDB.open('studyDB',1);req.onupgradeneeded=e=>{if(!e.target.result.objectStoreNames.contains('files'))e.target.result.createObjectStore('files',{keyPath:'id'})};req.onsuccess=e=>{idb=e.target.result;res(idb)};req.onerror=e=>rej(e)})}
-function saveFile(id,file){return new Promise((res,rej)=>{const tx=idb.transaction('files','readwrite');tx.objectStore('files').put({id,name:file.name,type:file.type,data:file});tx.oncomplete=()=>res();tx.onerror=e=>rej(e)})}
-function getFile(id){return new Promise((res,rej)=>{const tx=idb.transaction('files','readonly');const req=tx.objectStore('files').get(id);req.onsuccess=()=>res(req.result);req.onerror=e=>rej(e)})}
-function deleteFile(id){return new Promise(res=>{const tx=idb.transaction('files','readwrite');tx.objectStore('files').delete(id);tx.oncomplete=()=>res()})}
-
-function getLessonsForDate(date){
-  const dateKey=formatDateKey(date);
-  const dayIdx=date.getDay()===0?6:date.getDay()-1;
-  if(dayIdx<0||dayIdx>5)return {lessons:[],isOverride:false};
-  if(scheduleOverrides[dateKey])return {lessons:scheduleOverrides[dateKey].slice(),isOverride:true};
-  const weekType=getWeekTypeForDate(date);
-  if(!weekType)return {lessons:[],isOverride:false};
-  return {lessons:(schedule[weekType][dayIdx]||[]).slice(),isOverride:false};
+function openDB() {
+  return new Promise((res, rej) => {
+    const req = indexedDB.open('studyDB', 1);
+    req.onupgradeneeded = e => {
+      if (!e.target.result.objectStoreNames.contains('files')) {
+        e.target.result.createObjectStore('files', { keyPath: 'id' });
+      }
+    };
+    req.onsuccess = e => { idb = e.target.result; res(idb); };
+    req.onerror = e => rej(e);
+  });
 }
 
-function getAttendanceForLesson(dateKey,lessonId){return attendance[dateKey]?.[lessonId]||null}
+function saveFile(id, file) {
+  return new Promise((res, rej) => {
+    const tx = idb.transaction('files', 'readwrite');
+    tx.objectStore('files').put({ id, name: file.name, type: file.type, data: file });
+    tx.oncomplete = () => res();
+    tx.onerror = e => rej(e);
+  });
+}
+
+function getFile(id) {
+  return new Promise((res, rej) => {
+    const tx = idb.transaction('files', 'readonly');
+    const req = tx.objectStore('files').get(id);
+    req.onsuccess = () => res(req.result);
+    req.onerror = e => rej(e);
+  });
+}
+
+function deleteFile(id) {
+  return new Promise(res => {
+    const tx = idb.transaction('files', 'readwrite');
+    tx.objectStore('files').delete(id);
+    tx.oncomplete = () => res();
+  });
+}
+
+function getLessonsForDate(date) {
+  const dateKey = formatDateKey(date);
+  const dayIdx = date.getDay() === 0 ? 6 : date.getDay() - 1;
+  if (dayIdx < 0 || dayIdx > 5) return { lessons: [], isOverride: false };
+  if (scheduleOverrides[dateKey]) return { lessons: scheduleOverrides[dateKey].slice(), isOverride: true };
+  const weekType = getWeekTypeForDate(date);
+  if (!weekType) return { lessons: [], isOverride: false };
+  return { lessons: (schedule[weekType][dayIdx] || []).slice(), isOverride: false };
+}
+
+function getAttendanceForLesson(dateKey, lessonId) {
+  return attendance[dateKey]?.[lessonId] || null;
+}
 
 // ===== РЕНДЕР ШАПКИ =====
-function renderHeader(){
-  const dates=getWeekDates(weekOffset);
-  document.getElementById('weekDates').textContent=`${formatDate(dates[0])} – ${formatDate(dates[dates.length-1])}`;
-  const wt=getWeekTypeForDate(dates[0]);
-  document.getElementById('weekType').textContent=wt?(wt==='even'?'Чётная неделя':'Нечётная неделя'):'Нажми кнопку выше';
+function renderHeader() {
+  const dates = getWeekDates(weekOffset);
+  document.getElementById('weekDates').textContent = `${formatDate(dates[0])} – ${formatDate(dates[dates.length - 1])}`;
+  const wt = getWeekTypeForDate(dates[0]);
+  document.getElementById('weekType').textContent = wt ? (wt === 'even' ? 'Чётная неделя' : 'Нечётная неделя') : 'Нажми кнопку ниже';
   document.getElementById('btnSetEven').classList.remove('active');
   document.getElementById('btnSetOdd').classList.remove('active');
-  const currentWt=getWeekTypeForDate(getWeekDates(0)[0]);
-  if(currentWt==='even')document.getElementById('btnSetEven').classList.add('active');
-  else if(currentWt==='odd')document.getElementById('btnSetOdd').classList.add('active');
+  const currentWt = getWeekTypeForDate(getWeekDates(0)[0]);
+  if (currentWt === 'even') document.getElementById('btnSetEven').classList.add('active');
+  else if (currentWt === 'odd') document.getElementById('btnSetOdd').classList.add('active');
 }
 
-// ===== РЕНДЕР КАЛЕНДАРЯ =====
-function renderCalendar(){
+// ===== РЕНДЕР КАЛЕНДАРЯ (БЕЗОПАСНЫЙ С XSS-ЭКРАНИРОВАНИЕМ) =====
+function renderCalendar() {
   renderHeader();
-  const grid=document.getElementById('daysGrid');
-  grid.innerHTML='';
-  const dates=getWeekDates(weekOffset);
-  DAYS.forEach((day,dayIdx)=>{
-    const date=dates[dayIdx];
-    const dateKey=formatDateKey(date);
-    const {lessons,isOverride}=getLessonsForDate(date);
-    const sorted=lessons.sort((a,b)=>(a.slot||0)-(b.slot||0));
-    const card=document.createElement('div');
-    card.className='day-card';
-    card.innerHTML=`<h3>${day}${isOverride?'<span class="override-badge">ИЗМЕНЕНО</span>':''}</h3><div class="day-date">${formatDate(date)}</div>`;
-    if(sorted.length===0)card.innerHTML+=`<div class="empty">Нет пар</div>`;
-    else{
-      sorted.forEach(lesson=>{
-        const note=(lessonNotes[dateKey]&&lessonNotes[dateKey][lesson.id])||{};
-        const att=getAttendanceForLesson(dateKey,lesson.id);
-        const div=document.createElement('div');
-        div.className=`lesson type-${lesson.type||'lecture'}`;
-        let markers='';
-        if(note.homework)markers+='<span class="marker hw">HW</span>';
-        if(note.files&&note.files.length)markers+=`<span class="marker fl">F:${note.files.length}</span>`;
-        div.innerHTML=`
+  const grid = document.getElementById('daysGrid');
+  grid.innerHTML = '';
+  const dates = getWeekDates(weekOffset);
+  DAYS.forEach((day, dayIdx) => {
+    const date = dates[dayIdx];
+    const dateKey = formatDateKey(date);
+    const { lessons, isOverride } = getLessonsForDate(date);
+    const sorted = lessons.sort((a, b) => (a.slot || 0) - (b.slot || 0));
+    
+    const card = document.createElement('div');
+    card.className = 'day-card';
+    card.innerHTML = `<h3>${escapeHtml(day)}${isOverride ? '<span class="override-badge">ИЗМЕНЕНО</span>' : ''}</h3><div class="day-date">${escapeHtml(formatDate(date))}</div>`;
+    
+    if (sorted.length === 0) {
+      card.innerHTML += `<div class="empty">Нет пар</div>`;
+    } else {
+      sorted.forEach(lesson => {
+        const note = (lessonNotes[dateKey] && lessonNotes[dateKey][lesson.id]) || {};
+        const att = getAttendanceForLesson(dateKey, lesson.id);
+        const div = document.createElement('div');
+        div.className = `lesson type-${lesson.type || 'lecture'}`;
+        
+        let markers = '';
+        if (note.homework) markers += '<span class="marker hw">ДЗ</span>';
+        if (note.files && note.files.length) markers += `<span class="marker fl">📎 ${note.files.length}</span>`;
+        
+        div.innerHTML = `
           <div class="lesson-markers">${markers}</div>
-          <div class="lesson-time">${lesson.time||'—'}</div>
-          <div class="lesson-name">${lesson.name||'Без названия'}</div>
-          <div class="lesson-teacher">${lesson.teacher||''}${lesson.room?' · ауд. '+lesson.room:''}</div>
-          <div class="lesson-type">${TYPE_LABELS[lesson.type||'lecture']}</div>
+          <div class="lesson-time">${escapeHtml(lesson.time || '—')}</div>
+          <div class="lesson-name">${escapeHtml(lesson.name || 'Без названия')}</div>
+          <div class="lesson-teacher">${escapeHtml(lesson.teacher || '')}${lesson.room ? ' · ' + escapeHtml(lesson.room) : ''}</div>
+          <div class="lesson-type">${escapeHtml(TYPE_LABELS[lesson.type || 'lecture'] || 'Пара')}</div>
           <div class="attendance-btns">
-            <button class="att-btn ${att?.status==='present'?'present':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','present')">✓ Был</button>
-            <button class="att-btn ${att?.status==='absent'?'absent':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','absent')">✗ Прогул</button>
-            <button class="att-btn ${att?.status==='sick'?'sick':''}" onclick="event.stopPropagation();setAttendance('${dateKey}','${lesson.id}','${lesson.name}','sick')">🤒 Болел</button>
+            <button class="att-btn ${att?.status === 'present' ? 'present' : ''}" data-status="present">✓ Был</button>
+            <button class="att-btn ${att?.status === 'absent' ? 'absent' : ''}" data-status="absent">✗ Прогул</button>
+            <button class="att-btn ${att?.status === 'sick' ? 'sick' : ''}" data-status="sick">🤒 Болел</button>
           </div>
         `;
-        div.onclick=()=>openNoteModal(lesson,dateKey);
+
+        // Безопасное назначение обработчиков клика
+        const attBtns = div.querySelectorAll('.att-btn');
+        attBtns.forEach(btn => {
+          btn.onclick = (e) => {
+            e.stopPropagation();
+            setAttendance(dateKey, lesson.id, lesson.name, btn.dataset.status);
+          };
+        });
+
+        div.onclick = () => openNoteModal(lesson, dateKey);
         card.appendChild(div);
       });
     }
@@ -502,167 +875,588 @@ function renderCalendar(){
   });
 }
 
-async function setAttendance(dateKey,lessonId,subjectName,status){
-  if(!attendance[dateKey])attendance[dateKey]={};
-  attendance[dateKey][lessonId]={status,subjectName};
-  await saveToCloud();
+async function setAttendance(dateKey, lessonId, subjectName, status) {
+  if (!attendance[dateKey]) attendance[dateKey] = {};
+  attendance[dateKey][lessonId] = { status, subjectName: subjectName || '' };
+  saveToCloud();
   renderCalendar();
 }
 
 // ===== МОДАЛКА ЗАМЕТОК =====
-let currentNoteLesson=null,currentNoteDateKey='',editingNote=null;
-function openNoteModal(lesson,dateKey){
-  currentNoteLesson=lesson;currentNoteDateKey=dateKey;
-  const note=(lessonNotes[dateKey]&&lessonNotes[dateKey][lesson.id])||{homework:'',links:[],files:[]};
-  editingNote=JSON.parse(JSON.stringify(note));
-  const dateObj=new Date(dateKey+'T00:00:00');
-  document.getElementById('noteModalTitle').textContent=`${formatDate(dateObj)}`;
-  document.getElementById('noteLessonInfo').innerHTML=`<strong>${lesson.name||'Без названия'}</strong> · ${TYPE_LABELS[lesson.type||'lecture']}<br>${lesson.time||''}${lesson.room?' · ауд. '+lesson.room:''}${lesson.teacher?' · '+lesson.teacher:''}`;
-  document.getElementById('noteHomework').value=editingNote.homework||'';
-  document.getElementById('newLink').value='';
-  renderLinks();renderFiles();
+let currentNoteLesson = null, currentNoteDateKey = '', editingNote = null;
+function openNoteModal(lesson, dateKey) {
+  currentNoteLesson = lesson;
+  currentNoteDateKey = dateKey;
+  const note = (lessonNotes[dateKey] && lessonNotes[dateKey][lesson.id]) || { homework: '', links: [], files: [] };
+  editingNote = JSON.parse(JSON.stringify(note));
+  const dateObj = new Date(dateKey + 'T00:00:00');
+  
+  document.getElementById('noteModalTitle').textContent = `${formatDate(dateObj)}`;
+  
+  const infoEl = document.getElementById('noteLessonInfo');
+  infoEl.textContent = '';
+  const strong = document.createElement('strong');
+  strong.textContent = lesson.name || 'Без названия';
+  infoEl.appendChild(strong);
+  infoEl.appendChild(document.createTextNode(` · ${TYPE_LABELS[lesson.type || 'lecture'] || ''}\n`));
+  const desc = `${lesson.time || ''}${lesson.room ? ' · ' + lesson.room : ''}${lesson.teacher ? ' · ' + lesson.teacher : ''}`;
+  infoEl.appendChild(document.createTextNode(desc));
+
+  document.getElementById('noteHomework').value = editingNote.homework || '';
+  document.getElementById('newLink').value = '';
+  renderLinks();
+  renderFiles();
   document.getElementById('noteModal').classList.add('active');
 }
-function closeNoteModal(){document.getElementById('noteModal').classList.remove('active');editingNote=null}
-function addLink(){const url=document.getElementById('newLink').value.trim();if(!url)return;editingNote.links=editingNote.links||[];editingNote.links.push(url);document.getElementById('newLink').value='';renderLinks()}
-function removeLink(idx){editingNote.links.splice(idx,1);renderLinks()}
-function renderLinks(){const list=document.getElementById('linksList');list.innerHTML='';(editingNote.links||[]).forEach((url,i)=>{const div=document.createElement('div');div.className='link-item';div.innerHTML=`<a href="${url}" target="_blank">${url}</a><button class="mini-del" onclick="removeLink(${i})">Удалить</button>`;list.appendChild(div)})}
-async function renderFiles(){const list=document.getElementById('filesList');list.innerHTML='';for(const f of (editingNote.files||[])){const div=document.createElement('div');div.className='file-item';div.innerHTML=`<a href="#" onclick="downloadFile('${f.id}','${f.name.replace(/'/g,"\\'")}');return false;">${f.name}</a><button class="mini-del" onclick="removeFile('${f.id}')">Удалить</button>`;list.appendChild(div)}}
-async function downloadFile(id,name){const file=await getFile(id);if(!file)return alert('Файл не найден');const url=URL.createObjectURL(file.data);const a=document.createElement('a');a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
-async function removeFile(id){editingNote.files=editingNote.files.filter(f=>f.id!==id);await deleteFile(id);renderFiles()}
-document.getElementById('fileInput').addEventListener('change',async(e)=>{for(const file of e.target.files){const id='f_'+Date.now()+'_'+Math.random().toString(36).slice(2);await saveFile(id,file);editingNote.files=editingNote.files||[];editingNote.files.push({id,name:file.name})}e.target.value='';renderFiles()});
-async function saveNote(){editingNote.homework=document.getElementById('noteHomework').value.trim();if(!lessonNotes[currentNoteDateKey])lessonNotes[currentNoteDateKey]={};lessonNotes[currentNoteDateKey][currentNoteLesson.id]=editingNote;await saveToCloud();renderCalendar();closeNoteModal()}
 
-// ===== ОТЧЁТ =====
-let currentReportDateKey='';
-function renderToday(){
-  const today=new Date();
-  const todayKey=formatDateKey(today);
-  const dayIdx=today.getDay()===0?6:today.getDay()-1;
-  const dayName=DAYS[dayIdx]||'Суббота';
-  const report=dailyReports[todayKey];
-  const container=document.getElementById('todayContent');
-  if(!report){container.innerHTML=`<div style="text-align:center;padding:40px 20px"><h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin-bottom:12px">Ещё нет отчёта за сегодня</h3><p style="color:var(--muted);margin-bottom:20px">Заполни отчёт, чтобы отслеживать продуктивность</p><button class="btn btn-primary" onclick="openReportModal('${todayKey}')">Заполнить отчёт</button></div>`}
-  else{
-    let energyHtml='<div class="energy-display">';for(let i=1;i<=10;i++)energyHtml+=`<div class="energy-bar-mini ${i<=report.energy?'filled':''}"></div>`;energyHtml+='</div>';
-    container.innerHTML=`<div class="report-card"><div class="report-date">${dayName}, ${formatDate(today)}</div><div class="report-section"><div class="report-label">Уровень энергии</div>${energyHtml}</div>${report.best?`<div class="report-section"><div class="report-label">Что получилось лучше всего</div><div class="report-text">${report.best}</div></div>`:''}${report.hard?`<div class="report-section"><div class="report-label">Что вызвало трудности</div><div class="report-text">${report.hard}</div></div>`:''}${report.hours?`<div class="report-section"><div class="report-label">Часов учёбы</div><div class="report-text">${report.hours}</div></div>`:''}${report.learned?`<div class="report-section"><div class="report-label">Чему научился</div><div class="report-text">${report.learned}</div></div>`:''}${report.procrastinated?`<div class="report-section"><div class="report-label">Что откладывал</div><div class="report-text">${report.procrastinated}</div></div>`:''}${report.insight?`<div class="report-section"><div class="report-label">Главный инсайт дня</div><div class="report-text">${report.insight}</div></div>`:''}${report.goal?`<div class="report-section"><div class="report-label">Цель на завтра</div><div class="report-text">${report.goal}</div></div>`:''}${report.change?`<div class="report-section"><div class="report-label">Что изменить в подходе</div><div class="report-text">${report.change}</div></div>`:''}${report.thoughts?`<div class="report-section"><div class="report-label">Свободные мысли</div><div class="report-text">${report.thoughts}</div></div>`:''}<div style="display:flex;gap:12px;margin-top:12px"><button class="btn btn-secondary" onclick="openReportModal('${todayKey}')">Редактировать</button><button class="btn btn-danger" onclick="deleteReportByKey('${todayKey}')">Удалить отчёт</button></div></div>`;
+function closeNoteModal() {
+  document.getElementById('noteModal').classList.remove('active');
+  editingNote = null;
+}
+
+function addLink() {
+  const url = document.getElementById('newLink').value.trim();
+  if (!url) return;
+  if (!/^https?:\/\//i.test(url)) {
+    alert('Ссылка должна начинаться с http:// или https://');
+    return;
   }
-  const dates=getWeekDates(weekOffset);
-  const weekReports=dates.map(d=>({date:d,key:formatDateKey(d),report:dailyReports[formatDateKey(d)]})).filter(r=>r.report);
-  if(weekReports.length>0){
-    const historyDiv=document.createElement('div');
-    historyDiv.innerHTML=`<h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:16px;font-weight:700;margin:24px 0 16px">Отчёты за неделю</h3>`;
-    weekReports.forEach(r=>{const dayIdx=r.date.getDay()===0?6:r.date.getDay()-1;const card=document.createElement('div');card.className='report-card';card.style.cursor='pointer';card.innerHTML=`<div class="report-date">${DAYS[dayIdx]||'Суббота'}, ${formatDate(r.date)}</div><div class="report-section"><div class="report-label">Энергия</div><div class="energy-display">${Array.from({length:10},(_,i)=>`<div class="energy-bar-mini ${i<r.report.energy?'filled':''}"></div>`).join('')}</div></div>${r.report.best?`<div class="report-section"><div class="report-label">Лучшее за день</div><div class="report-text">${r.report.best.substring(0,120)}${r.report.best.length>120?'...':''}</div></div>`:''}`;card.onclick=()=>openReportModal(r.key);historyDiv.appendChild(card)});
+  editingNote.links = editingNote.links || [];
+  editingNote.links.push(url);
+  document.getElementById('newLink').value = '';
+  renderLinks();
+}
+
+function removeLink(idx) {
+  editingNote.links.splice(idx, 1);
+  renderLinks();
+}
+
+function renderLinks() {
+  const list = document.getElementById('linksList');
+  list.innerHTML = '';
+  (editingNote.links || []).forEach((url, i) => {
+    const div = document.createElement('div');
+    div.className = 'link-item';
+    
+    const a = document.createElement('a');
+    a.href = sanitizeUrl(url);
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    a.textContent = url;
+    
+    const btn = document.createElement('button');
+    btn.className = 'mini-del';
+    btn.textContent = 'Удалить';
+    btn.onclick = () => removeLink(i);
+    
+    div.appendChild(a);
+    div.appendChild(btn);
+    list.appendChild(div);
+  });
+}
+
+async function renderFiles() {
+  const list = document.getElementById('filesList');
+  list.innerHTML = '';
+  for (const f of (editingNote.files || [])) {
+    const div = document.createElement('div');
+    div.className = 'file-item';
+    
+    const a = document.createElement('a');
+    a.href = '#';
+    a.textContent = f.name;
+    a.onclick = (e) => {
+      e.preventDefault();
+      downloadFile(f.id, f.name);
+    };
+    
+    const btn = document.createElement('button');
+    btn.className = 'mini-del';
+    btn.textContent = 'Удалить';
+    btn.onclick = () => removeFile(f.id);
+    
+    div.appendChild(a);
+    div.appendChild(btn);
+    list.appendChild(div);
+  }
+}
+
+async function downloadFile(id, name) {
+  const file = await getFile(id);
+  if (!file) {
+    alert('Файл хранится локально в IndexedDB данного устройства и не был найден на этом устройстве.');
+    return;
+  }
+  const url = URL.createObjectURL(file.data);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = name;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+async function removeFile(id) {
+  editingNote.files = editingNote.files.filter(f => f.id !== id);
+  await deleteFile(id);
+  renderFiles();
+}
+
+document.getElementById('fileInput').addEventListener('change', async (e) => {
+  for (const file of e.target.files) {
+    const id = 'f_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+    await saveFile(id, file);
+    editingNote.files = editingNote.files || [];
+    editingNote.files.push({ id, name: file.name });
+  }
+  e.target.value = '';
+  renderFiles();
+});
+
+async function saveNote() {
+  editingNote.homework = document.getElementById('noteHomework').value.trim();
+  if (!lessonNotes[currentNoteDateKey]) lessonNotes[currentNoteDateKey] = {};
+  lessonNotes[currentNoteDateKey][currentNoteLesson.id] = editingNote;
+  saveToCloud();
+  renderCalendar();
+  closeNoteModal();
+}
+
+// ===== ДНЕВНОЙ ОТЧЁТ (БЕЗОПАСНЫЙ С XSS-ЭКРАНИРОВАНИЕМ) =====
+let currentReportDateKey = '';
+function renderToday() {
+  const today = new Date();
+  const todayKey = formatDateKey(today);
+  const dayIdx = today.getDay() === 0 ? 6 : today.getDay() - 1;
+  const dayName = DAYS[dayIdx] || 'Суббота';
+  const report = dailyReports[todayKey];
+  const container = document.getElementById('todayContent');
+  
+  if (!report) {
+    container.innerHTML = `
+      <div style="text-align:center;padding:40px 20px">
+        <h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin-bottom:12px">Ещё нет отчёта за сегодня</h3>
+        <p style="color:var(--muted);margin-bottom:20px">Заполни отчёт, чтобы отслеживать продуктивность и успехи</p>
+        <button class="btn btn-primary" onclick="openReportModal('${escapeHtml(todayKey)}')">Заполнить отчёт</button>
+      </div>`;
+  } else {
+    let energyHtml = '<div class="energy-display">';
+    for (let i = 1; i <= 10; i++) {
+      energyHtml += `<div class="energy-bar-mini ${i <= report.energy ? 'filled' : ''}"></div>`;
+    }
+    energyHtml += '</div>';
+
+    container.innerHTML = `
+      <div class="report-card">
+        <div class="report-date">${escapeHtml(dayName)}, ${escapeHtml(formatDate(today))}</div>
+        <div class="report-section"><div class="report-label">Уровень энергии</div>${energyHtml}</div>
+        ${report.best ? `<div class="report-section"><div class="report-label">Что получилось лучше всего</div><div class="report-text">${escapeHtml(report.best)}</div></div>` : ''}
+        ${report.hard ? `<div class="report-section"><div class="report-label">Что вызвало трудности</div><div class="report-text">${escapeHtml(report.hard)}</div></div>` : ''}
+        ${report.hours ? `<div class="report-section"><div class="report-label">Часов учёбы</div><div class="report-text">${escapeHtml(report.hours)}</div></div>` : ''}
+        ${report.learned ? `<div class="report-section"><div class="report-label">Чему научился</div><div class="report-text">${escapeHtml(report.learned)}</div></div>` : ''}
+        ${report.procrastinated ? `<div class="report-section"><div class="report-label">Что откладывал</div><div class="report-text">${escapeHtml(report.procrastinated)}</div></div>` : ''}
+        ${report.insight ? `<div class="report-section"><div class="report-label">Главный инсайт дня</div><div class="report-text">${escapeHtml(report.insight)}</div></div>` : ''}
+        ${report.goal ? `<div class="report-section"><div class="report-label">Цель на завтра</div><div class="report-text">${escapeHtml(report.goal)}</div></div>` : ''}
+        ${report.change ? `<div class="report-section"><div class="report-label">Что изменить в подходе</div><div class="report-text">${escapeHtml(report.change)}</div></div>` : ''}
+        ${report.thoughts ? `<div class="report-section"><div class="report-label">Свободные мысли</div><div class="report-text">${escapeHtml(report.thoughts)}</div></div>` : ''}
+        <div style="display:flex;gap:12px;margin-top:12px">
+          <button class="btn btn-secondary" onclick="openReportModal('${escapeHtml(todayKey)}')">Редактировать</button>
+          <button class="btn btn-danger" onclick="deleteReportByKey('${escapeHtml(todayKey)}')">Удалить отчёт</button>
+        </div>
+      </div>`;
+  }
+
+  const dates = getWeekDates(weekOffset);
+  const weekReports = dates.map(d => ({ date: d, key: formatDateKey(d), report: dailyReports[formatDateKey(d)] })).filter(r => r.report);
+  if (weekReports.length > 0) {
+    const historyDiv = document.createElement('div');
+    historyDiv.innerHTML = `<h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:16px;font-weight:700;margin:24px 0 16px">Отчёты за неделю</h3>`;
+    weekReports.forEach(r => {
+      const dayIdx = r.date.getDay() === 0 ? 6 : r.date.getDay() - 1;
+      const card = document.createElement('div');
+      card.className = 'report-card';
+      card.style.cursor = 'pointer';
+      
+      const snippet = r.report.best ? r.report.best.substring(0, 120) : '';
+      card.innerHTML = `
+        <div class="report-date">${escapeHtml(DAYS[dayIdx] || 'Суббота')}, ${escapeHtml(formatDate(r.date))}</div>
+        <div class="report-section">
+          <div class="report-label">Энергия</div>
+          <div class="energy-display">${Array.from({ length: 10 }, (_, i) => `<div class="energy-bar-mini ${i < r.report.energy ? 'filled' : ''}"></div>`).join('')}</div>
+        </div>
+        ${snippet ? `<div class="report-section"><div class="report-label">Лучшее за день</div><div class="report-text">${escapeHtml(snippet)}</div></div>` : ''}
+      `;
+      card.onclick = () => openReportModal(r.key);
+      historyDiv.appendChild(card);
+    });
     container.appendChild(historyDiv);
   }
 }
-function openReportModal(dateKey){currentReportDateKey=dateKey;const report=dailyReports[dateKey]||{};currentEnergy=report.energy||null;const dateObj=new Date(dateKey+'T00:00:00');const dayIdx=dateObj.getDay()===0?6:dateObj.getDay()-1;const dayName=DAYS[dayIdx]||'Суббота';document.getElementById('reportModalTitle').textContent=`Отчёт · ${dayName}, ${formatDate(dateObj)}`;document.getElementById('reportBest').value=report.best||'';document.getElementById('reportHard').value=report.hard||'';document.getElementById('reportHours').value=report.hours||'';document.getElementById('reportLearned').value=report.learned||'';document.getElementById('reportProcrastinated').value=report.procrastinated||'';document.getElementById('reportInsight').value=report.insight||'';document.getElementById('reportGoal').value=report.goal||'';document.getElementById('reportChange').value=report.change||'';document.getElementById('reportThoughts').value=report.thoughts||'';document.querySelectorAll('.energy-dot').forEach(dot=>dot.classList.toggle('selected',parseInt(dot.dataset.val)===currentEnergy));document.getElementById('reportModal').classList.add('active')}
-function closeReportModal(){document.getElementById('reportModal').classList.remove('active');currentEnergy=null}
-function selectEnergy(val){currentEnergy=val;document.querySelectorAll('.energy-dot').forEach(dot=>dot.classList.toggle('selected',parseInt(dot.dataset.val)===val))}
-async function saveReport(){if(!currentEnergy)return alert('Выбери уровень энергии');dailyReports[currentReportDateKey]={energy:currentEnergy,best:document.getElementById('reportBest').value.trim(),hard:document.getElementById('reportHard').value.trim(),hours:document.getElementById('reportHours').value.trim(),learned:document.getElementById('reportLearned').value.trim(),procrastinated:document.getElementById('reportProcrastinated').value.trim(),insight:document.getElementById('reportInsight').value.trim(),goal:document.getElementById('reportGoal').value.trim(),change:document.getElementById('reportChange').value.trim(),thoughts:document.getElementById('reportThoughts').value.trim()};await saveToCloud();renderToday();closeReportModal()}
-async function deleteReport(){if(!confirm('Удалить этот отчёт?'))return;delete dailyReports[currentReportDateKey];await saveToCloud();renderToday();closeReportModal()}
-async function deleteReportByKey(dateKey){if(!confirm('Удалить отчёт за этот день?'))return;delete dailyReports[dateKey];await saveToCloud();renderToday()}
+
+function openReportModal(dateKey) {
+  currentReportDateKey = dateKey;
+  const report = dailyReports[dateKey] || {};
+  currentEnergy = report.energy || null;
+  const dateObj = new Date(dateKey + 'T00:00:00');
+  const dayIdx = dateObj.getDay() === 0 ? 6 : dateObj.getDay() - 1;
+  const dayName = DAYS[dayIdx] || 'Суббота';
+  
+  document.getElementById('reportModalTitle').textContent = `Отчёт · ${dayName}, ${formatDate(dateObj)}`;
+  document.getElementById('reportBest').value = report.best || '';
+  document.getElementById('reportHard').value = report.hard || '';
+  document.getElementById('reportHours').value = report.hours || '';
+  document.getElementById('reportLearned').value = report.learned || '';
+  document.getElementById('reportProcrastinated').value = report.procrastinated || '';
+  document.getElementById('reportInsight').value = report.insight || '';
+  document.getElementById('reportGoal').value = report.goal || '';
+  document.getElementById('reportChange').value = report.change || '';
+  document.getElementById('reportThoughts').value = report.thoughts || '';
+  
+  document.querySelectorAll('.energy-dot').forEach(dot => {
+    dot.classList.toggle('selected', parseInt(dot.dataset.val) === currentEnergy);
+  });
+  document.getElementById('reportModal').classList.add('active');
+}
+
+function closeReportModal() {
+  document.getElementById('reportModal').classList.remove('active');
+  currentEnergy = null;
+}
+
+function selectEnergy(val) {
+  currentEnergy = val;
+  document.querySelectorAll('.energy-dot').forEach(dot => {
+    dot.classList.toggle('selected', parseInt(dot.dataset.val) === val);
+  });
+}
+
+async function saveReport() {
+  if (!currentEnergy) return alert('Пожалуйста, выбери уровень энергии');
+  dailyReports[currentReportDateKey] = {
+    energy: currentEnergy,
+    best: document.getElementById('reportBest').value.trim(),
+    hard: document.getElementById('reportHard').value.trim(),
+    hours: document.getElementById('reportHours').value.trim(),
+    learned: document.getElementById('reportLearned').value.trim(),
+    procrastinated: document.getElementById('reportProcrastinated').value.trim(),
+    insight: document.getElementById('reportInsight').value.trim(),
+    goal: document.getElementById('reportGoal').value.trim(),
+    change: document.getElementById('reportChange').value.trim(),
+    thoughts: document.getElementById('reportThoughts').value.trim()
+  };
+  saveToCloud();
+  renderToday();
+  closeReportModal();
+}
+
+async function deleteReport() {
+  if (!confirm('Удалить этот отчёт?')) return;
+  delete dailyReports[currentReportDateKey];
+  saveToCloud();
+  renderToday();
+  closeReportModal();
+}
+
+async function deleteReportByKey(dateKey) {
+  if (!confirm('Удалить отчёт за этот день?')) return;
+  delete dailyReports[dateKey];
+  saveToCloud();
+  renderToday();
+}
 
 // ===== РЕДАКТОР РАСПИСАНИЯ =====
-let currentEditorDayIdx=null,currentEditorWeekType=null,currentEditorLessonId=null,editingBaseLesson=null;
-function renderEditor(){
-  const grid=document.getElementById('editorGrid');
-  grid.innerHTML='';
-  ['even','odd'].forEach(weekType=>{
-    const weekLabel=weekType==='even'?'Чётная неделя':'Нечётная неделя';
-    const weekDiv=document.createElement('div');
-    weekDiv.style.gridColumn='1 / -1';
-    weekDiv.innerHTML=`<h2 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;font-weight:700;margin-bottom:16px;margin-top:${weekType==='odd'?'20px':'0'}">${weekLabel}</h2>`;
-    const daysDiv=document.createElement('div');
-    daysDiv.className='days-grid';
-    DAYS.forEach((day,dayIdx)=>{
-      const lessons=(schedule[weekType][dayIdx]||[]).sort((a,b)=>(a.slot||0)-(b.slot||0));
-      const card=document.createElement('div');
-      card.className='day-card';
-      card.innerHTML=`<h3>${day}</h3>`;
-      if(lessons.length===0)card.innerHTML+=`<div class="empty">Нет пар</div>`;
-      else lessons.forEach(lesson=>{
-        const div=document.createElement('div');
-        div.className=`lesson type-${lesson.type||'lecture'}`;
-        div.innerHTML=`<div class="lesson-time">${lesson.time||'—'}</div><div class="lesson-name">${lesson.name||'Без названия'}</div><div class="lesson-teacher">${lesson.teacher||''}${lesson.room?' · ауд. '+lesson.room:''}</div><div class="lesson-type">${TYPE_LABELS[lesson.type||'lecture']}</div><button style="opacity:1;position:static;margin-top:6px;background:rgba(239,71,111,0.1);color:#ef476f;border:none;padding:4px 10px;border-radius:8px;cursor:pointer;font-family:'Nunito';font-size:12px;font-weight:700" onclick="event.stopPropagation();deleteBaseLesson('${weekType}',${dayIdx},'${lesson.id}')">Удалить</button>`;
-        div.onclick=()=>openEditorModal(weekType,dayIdx,lesson.id);
-        card.appendChild(div);
-      });
-      const addBtn=document.createElement('button');
-      addBtn.className='btn btn-primary btn-block';
-      addBtn.textContent='+ Добавить пару';
-      addBtn.onclick=()=>openEditorModal(weekType,dayIdx,null);
+let currentEditorDayIdx = null, currentEditorWeekType = null, currentEditorLessonId = null, editingBaseLesson = null;
+
+function renderEditor() {
+  const grid = document.getElementById('editorGrid');
+  grid.innerHTML = '';
+  
+  ['even', 'odd'].forEach(weekType => {
+    const weekLabel = weekType === 'even' ? 'Чётная неделя' : 'Нечётная неделя';
+    const weekDiv = document.createElement('div');
+    weekDiv.style.gridColumn = '1 / -1';
+    weekDiv.innerHTML = `<h2 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;font-weight:700;margin-bottom:16px;margin-top:${weekType === 'odd' ? '20px' : '0'}">${escapeHtml(weekLabel)}</h2>`;
+    
+    const daysDiv = document.createElement('div');
+    daysDiv.className = 'days-grid';
+    
+    DAYS.forEach((day, dayIdx) => {
+      const lessons = (schedule[weekType][dayIdx] || []).sort((a, b) => (a.slot || 0) - (b.slot || 0));
+      const card = document.createElement('div');
+      card.className = 'day-card';
+      card.innerHTML = `<h3>${escapeHtml(day)}</h3>`;
+      
+      if (lessons.length === 0) {
+        card.innerHTML += `<div class="empty">Нет пар</div>`;
+      } else {
+        lessons.forEach(lesson => {
+          const div = document.createElement('div');
+          div.className = `lesson type-${lesson.type || 'lecture'}`;
+          div.innerHTML = `
+            <div class="lesson-time">${escapeHtml(lesson.time || '—')}</div>
+            <div class="lesson-name">${escapeHtml(lesson.name || 'Без названия')}</div>
+            <div class="lesson-teacher">${escapeHtml(lesson.teacher || '')}${lesson.room ? ' · ' + escapeHtml(lesson.room) : ''}</div>
+            <div class="lesson-type">${escapeHtml(TYPE_LABELS[lesson.type || 'lecture'] || 'Пара')}</div>
+            <button class="mini-del-btn" style="opacity:1;position:static;margin-top:6px;background:rgba(239,71,111,0.1);color:#ef476f;border:none;padding:4px 10px;border-radius:8px;cursor:pointer;font-family:'Nunito';font-size:12px;font-weight:700">Удалить</button>
+          `;
+          
+          div.querySelector('.mini-del-btn').onclick = (e) => {
+            e.stopPropagation();
+            deleteBaseLesson(weekType, dayIdx, lesson.id);
+          };
+          div.onclick = () => openEditorModal(weekType, dayIdx, lesson.id);
+          card.appendChild(div);
+        });
+      }
+      
+      const addBtn = document.createElement('button');
+      addBtn.className = 'btn btn-primary btn-block';
+      addBtn.textContent = '+ Добавить пару';
+      addBtn.onclick = () => openEditorModal(weekType, dayIdx, null);
       card.appendChild(addBtn);
       daysDiv.appendChild(card);
     });
+    
     weekDiv.appendChild(daysDiv);
     grid.appendChild(weekDiv);
   });
 }
-function openEditorModal(weekType,dayIdx,lessonId){
-  currentEditorWeekType=weekType;currentEditorDayIdx=dayIdx;currentEditorLessonId=lessonId;
-  const lessons=schedule[weekType][dayIdx]||[];
-  const lesson=lessonId?lessons.find(l=>l.id===lessonId):{};
-  editingBaseLesson=lesson?JSON.parse(JSON.stringify(lesson)):{};
-  const weekLabel=weekType==='even'?'Чётная':'Нечётная';
-  document.getElementById('editorModalTitle').textContent=`${weekLabel} · ${DAYS[dayIdx]}${lessonId?' · Редактирование':' · Новая пара'}`;
-  document.getElementById('lessonSlot').value=editingBaseLesson.slot!==undefined&&editingBaseLesson.slot!==null?editingBaseLesson.slot:'';
-  document.getElementById('lessonType').value=editingBaseLesson.type||'lecture';
-  document.getElementById('lessonName').value=editingBaseLesson.name||'';
-  document.getElementById('lessonTeacher').value=editingBaseLesson.teacher||'';
-  document.getElementById('lessonRoom').value=editingBaseLesson.room||'';
+
+function openEditorModal(weekType, dayIdx, lessonId) {
+  currentEditorWeekType = weekType;
+  currentEditorDayIdx = dayIdx;
+  currentEditorLessonId = lessonId;
+  const lessons = schedule[weekType][dayIdx] || [];
+  const lesson = lessonId ? lessons.find(l => l.id === lessonId) : {};
+  editingBaseLesson = lesson ? JSON.parse(JSON.stringify(lesson)) : {};
+  
+  const weekLabel = weekType === 'even' ? 'Чётная' : 'Нечётная';
+  document.getElementById('editorModalTitle').textContent = `${weekLabel} · ${DAYS[dayIdx]}${lessonId ? ' · Редактирование' : ' · Новая пара'}`;
+  document.getElementById('lessonSlot').value = (editingBaseLesson.slot !== undefined && editingBaseLesson.slot !== null) ? editingBaseLesson.slot : 0;
+  document.getElementById('lessonType').value = editingBaseLesson.type || 'lecture';
+  document.getElementById('lessonName').value = editingBaseLesson.name || '';
+  document.getElementById('lessonTeacher').value = editingBaseLesson.teacher || '';
+  document.getElementById('lessonRoom').value = editingBaseLesson.room || '';
   document.getElementById('editorModal').classList.add('active');
 }
-function closeEditorModal(){document.getElementById('editorModal').classList.remove('active');editingBaseLesson=null}
-async function saveBaseLesson(){
-  const slotIdx=document.getElementById('lessonSlot').value;
-  const slot=slotIdx!==''?TIME_SLOTS[parseInt(slotIdx)]:null;
-  editingBaseLesson.slot=slotIdx!==''?parseInt(slotIdx):null;
-  editingBaseLesson.time=slot?slot.time:'';
-  editingBaseLesson.type=document.getElementById('lessonType').value;
-  editingBaseLesson.name=document.getElementById('lessonName').value.trim();
-  editingBaseLesson.teacher=document.getElementById('lessonTeacher').value.trim();
-  editingBaseLesson.room=document.getElementById('lessonRoom').value.trim();
-  if(!editingBaseLesson.name)return alert('Введи название предмета');
-  if(editingBaseLesson.slot===null&&currentEditorLessonId===null)return alert('Выбери время');
-  if(currentEditorLessonId===null){editingBaseLesson.id=generateId();schedule[currentEditorWeekType][currentEditorDayIdx].push(editingBaseLesson)}
-  else{const idx=schedule[currentEditorWeekType][currentEditorDayIdx].findIndex(l=>l.id===currentEditorLessonId);if(idx!==-1){editingBaseLesson.id=currentEditorLessonId;schedule[currentEditorWeekType][currentEditorDayIdx][idx]=editingBaseLesson}}
-  await saveToCloud();renderEditor();renderCalendar();closeEditorModal();
-}
-async function deleteBaseLesson(weekType,dayIdx,lessonId){if(!confirm('Удалить эту пару из базового расписания?'))return;schedule[weekType][dayIdx]=schedule[weekType][dayIdx].filter(l=>l.id!==lessonId);await saveToCloud();renderEditor();renderCalendar()}
 
-// ===== НАСТРОЙКИ =====
-function renderSettings(){
-  const container=document.getElementById('settingsContent');
-  container.innerHTML=`
-    <h2 style="font-family:'Quicksand';color:#6c5ce7;font-size:20px;margin-bottom:16px">Настройки</h2>
-    <div style="max-width:400px;display:flex;flex-direction:column;gap:12px">
-      <button class="btn btn-primary" onclick="exportData()">📤 Экспорт данных (JSON)</button>
-      <button class="btn btn-primary" onclick="document.getElementById('importFile').click()"> Импорт данных</button>
+function closeEditorModal() {
+  document.getElementById('editorModal').classList.remove('active');
+  editingBaseLesson = null;
+}
+
+async function saveBaseLesson() {
+  const slotIdx = document.getElementById('lessonSlot').value;
+  const slot = slotIdx !== '' ? TIME_SLOTS[parseInt(slotIdx)] : null;
+  editingBaseLesson.slot = slotIdx !== '' ? parseInt(slotIdx) : 0;
+  editingBaseLesson.time = slot ? slot.time : '';
+  editingBaseLesson.type = document.getElementById('lessonType').value;
+  editingBaseLesson.name = document.getElementById('lessonName').value.trim();
+  editingBaseLesson.teacher = document.getElementById('lessonTeacher').value.trim();
+  editingBaseLesson.room = document.getElementById('lessonRoom').value.trim();
+  
+  if (!editingBaseLesson.name) return alert('Пожалуйста, введи название предмета');
+  
+  if (currentEditorLessonId === null) {
+    editingBaseLesson.id = generateId();
+    schedule[currentEditorWeekType][currentEditorDayIdx].push(editingBaseLesson);
+  } else {
+    const idx = schedule[currentEditorWeekType][currentEditorDayIdx].findIndex(l => l.id === currentEditorLessonId);
+    if (idx !== -1) {
+      editingBaseLesson.id = currentEditorLessonId;
+      schedule[currentEditorWeekType][currentEditorDayIdx][idx] = editingBaseLesson;
+    }
+  }
+  saveToCloud();
+  renderEditor();
+  renderCalendar();
+  closeEditorModal();
+}
+
+async function deleteBaseLesson(weekType, dayIdx, lessonId) {
+  if (!confirm('Удалить эту пару из расписания?')) return;
+  schedule[weekType][dayIdx] = schedule[weekType][dayIdx].filter(l => l.id !== lessonId);
+  saveToCloud();
+  renderEditor();
+  renderCalendar();
+}
+
+// ===== НАСТРОЙКИ & РЕЗЕРВНОЕ КОПИРОВАНИЕ =====
+function renderSettings() {
+  const container = document.getElementById('settingsContent');
+  const persistentLabel = isPersistentStorageGranted ? 'Активировано (надежная защита от удаления)' : 'Стандартное (может очищаться браузером)';
+
+  container.innerHTML = `
+    <h2 style="font-family:'Quicksand';color:#6c5ce7;font-size:20px;margin-bottom:16px">Настройки и безопасность данных</h2>
+    
+    <div class="info-banner">
+      <strong>Статус сохранности данных:</strong><br>
+      • Облачная БД Firestore: синхронизация с аккаунтом.<br>
+      • Локальное постоянное хранилище: <span class="status-pill">${persistentLabel}</span><br>
+      • Офлайн-кэш Service Worker: включен (работает без интернета).
+    </div>
+
+    <div style="max-width:440px;display:flex;flex-direction:column;gap:12px">
+      <button class="btn btn-secondary" onclick="loadPdfTemplate()">📥 Загрузить шаблон расписания (гр. 6131-010402D)</button>
+      <button class="btn btn-primary" onclick="exportData()">📤 Экспорт резервной копии (JSON)</button>
+      <button class="btn btn-primary" onclick="document.getElementById('importFile').click()">📥 Импорт данных из файла</button>
       <input type="file" id="importFile" accept=".json" style="display:none" onchange="importData(event)">
+      <button class="btn btn-secondary" onclick="checkStorageStatus()">🛡️ Проверить статус постоянного хранилища</button>
       <button class="btn btn-danger" onclick="clearAllData()">🗑️ Очистить все данные</button>
     </div>
-    <h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin:30px 0 16px">История версий</h3>
-    <div id="versionList">${versionHistory.length===0?'<div class="empty">Нет сохранённых версий</div>':versionHistory.slice().reverse().map((v,i)=>`<div class="version-item"><span>${new Date(v.timestamp).toLocaleString('ru-RU')}</span><button onclick="restoreVersion(${versionHistory.length-1-i})">Восстановить</button></div>`).join('')}</div>
-    <p style="margin-top:20px;color:var(--muted);font-size:14px;line-height:1.6;background:#f8f9fc;padding:16px;border-radius:12px;border-left:4px solid var(--primary)">Данные хранятся локально и в облаке. Делай экспорт раз в неделю для резервной копии.</p>
+
+    <h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin:30px 0 16px">История версий (локальные снапшоты)</h3>
+    <div id="versionList">
+      ${versionHistory.length === 0 ? '<div class="empty">Нет сохранённых версий</div>' : versionHistory.slice().reverse().map((v, i) => `
+        <div class="version-item">
+          <span>${escapeHtml(new Date(v.timestamp).toLocaleString('ru-RU'))}</span>
+          <button onclick="restoreVersion(${versionHistory.length - 1 - i})">Восстановить</button>
+        </div>
+      `).join('')}
+    </div>
+    
+    <p style="margin-top:20px;color:var(--muted);font-size:14px;line-height:1.6;background:#f8f9fc;padding:16px;border-radius:12px;border-left:4px solid var(--primary)">
+      Регулярный экспорт в JSON гарантирует 100% сохранность ваших заметок и посещаемости даже при полной переустановке браузера или смене устройства.
+    </p>
   `;
 }
-function exportData(){const data={schedule,scheduleOverrides,lessonNotes,dailyReports,attendance,attendanceLimits,weekAnchor,exportedAt:new Date().toISOString()};const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='study-space-backup-'+new Date().toISOString().slice(0,10)+'.json';a.click()}
-function importData(e){const file=e.target.files[0];if(!file)return;const reader=new FileReader();reader.onload=ev=>{try{const data=JSON.parse(ev.target.result);if(data.schedule)schedule=data.schedule;if(data.scheduleOverrides)scheduleOverrides=data.scheduleOverrides;if(data.lessonNotes)lessonNotes=data.lessonNotes;if(data.dailyReports)dailyReports=data.dailyReports;if(data.attendance)attendance=data.attendance;if(data.attendanceLimits)attendanceLimits=data.attendanceLimits;if(data.weekAnchor)weekAnchor=data.weekAnchor;saveToCloud();renderAll();alert('Данные импортированы!')}catch(err){alert('Ошибка импорта: '+err.message)}};reader.readAsText(file)}
-async function clearAllData(){if(!confirm('Удалить ВСЕ данные?'))return;if(!confirm('Точно?'))return;schedule={even:{},odd:{}};scheduleOverrides={};lessonNotes={};dailyReports={};attendance={};attendanceLimits={};weekAnchor=null;await saveToCloud();location.reload()}
-function restoreVersion(idx){if(!confirm('Восстановить эту версию? Текущие данные будут заменены.'))return;const v=versionHistory[idx];if(!v)return;schedule=v.data.schedule||schedule;scheduleOverrides=v.data.scheduleOverrides||{};lessonNotes=v.data.lessonNotes||{};dailyReports=v.data.dailyReports||{};attendance=v.data.attendance||{};attendanceLimits=v.data.attendanceLimits||{};weekAnchor=v.data.weekAnchor||null;saveToCloud();renderAll();alert('Версия восстановлена!')}
+
+async function checkStorageStatus() {
+  await requestStoragePersistence();
+  if (navigator.storage && navigator.storage.estimate) {
+    const { quota, usage } = await navigator.storage.estimate();
+    const quotaMb = Math.round(quota / (1024 * 1024));
+    const usageMb = (usage / (1024 * 1024)).toFixed(2);
+    alert(`Постоянное хранилище: ${isPersistentStorageGranted ? 'Активно ✅ (защищено от автоудаления)' : 'Не гарантировано ⚠️'}\nЗанято: ${usageMb} МБ из доступных ${quotaMb} МБ`);
+  } else {
+    alert(`Постоянное хранилище: ${isPersistentStorageGranted ? 'Активно ✅' : 'Обычное'}`);
+  }
+  renderSettings();
+}
+
+function exportData() {
+  const data = {
+    schedule, scheduleOverrides, lessonNotes, dailyReports,
+    attendance, attendanceLimits, weekAnchor,
+    exportedAt: new Date().toISOString()
+  };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'study-space-backup-' + new Date().toISOString().slice(0, 10) + '.json';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importData(e) {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = ev => {
+    try {
+      const data = JSON.parse(ev.target.result);
+      if (!data || typeof data !== 'object') throw new Error('Некорректный формат файла');
+      
+      // Безопасная валидация полей импорта
+      if (data.schedule && typeof data.schedule === 'object') schedule = data.schedule;
+      if (data.scheduleOverrides && typeof data.scheduleOverrides === 'object') scheduleOverrides = data.scheduleOverrides;
+      if (data.lessonNotes && typeof data.lessonNotes === 'object') lessonNotes = data.lessonNotes;
+      if (data.dailyReports && typeof data.dailyReports === 'object') dailyReports = data.dailyReports;
+      if (data.attendance && typeof data.attendance === 'object') attendance = data.attendance;
+      if (data.attendanceLimits && typeof data.attendanceLimits === 'object') attendanceLimits = data.attendanceLimits;
+      if (data.weekAnchor && typeof data.weekAnchor === 'object') weekAnchor = data.weekAnchor;
+      
+      ensureScheduleStructure();
+      saveToCloud();
+      renderAll();
+      alert('Данные успешно импортированы!');
+    } catch(err) {
+      alert('Ошибка при импорте файла: ' + err.message);
+    }
+  };
+  reader.readAsText(file);
+}
+
+async function clearAllData() {
+  if (!confirm('Удалить ВСЕ данные расписания и заметок?')) return;
+  if (!confirm('Это действие необратимо. У вас есть резервная копия?')) return;
+  schedule = { even: {}, odd: {} };
+  scheduleOverrides = {};
+  lessonNotes = {};
+  dailyReports = {};
+  attendance = {};
+  attendanceLimits = {};
+  weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR));
+  ensureScheduleStructure();
+  saveToCloud();
+  location.reload();
+}
+
+function restoreVersion(idx) {
+  if (!confirm('Восстановить эту версию? Текущие данные будут заменены состоянием этого снапшота.')) return;
+  const v = versionHistory[idx];
+  if (!v || !v.data) return;
+  schedule = v.data.schedule || schedule;
+  scheduleOverrides = v.data.scheduleOverrides || {};
+  lessonNotes = v.data.lessonNotes || {};
+  dailyReports = v.data.dailyReports || {};
+  attendance = v.data.attendance || {};
+  attendanceLimits = v.data.attendanceLimits || {};
+  weekAnchor = v.data.weekAnchor || DEFAULT_WEEK_ANCHOR;
+  ensureScheduleStructure();
+  saveToCloud();
+  renderAll();
+  alert('Версия восстановлена!');
+}
 
 // ===== НАВИГАЦИЯ =====
-function changeWeek(direction){weekOffset+=direction;renderCalendar();renderToday()}
-document.querySelectorAll('.tab').forEach(tab=>{tab.onclick=()=>{document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));tab.classList.add('active');document.querySelectorAll('.tab-content').forEach(c=>c.style.display='none');document.getElementById(tab.dataset.tab).style.display='block';if(tab.dataset.tab==='calendar')renderCalendar();if(tab.dataset.tab==='today')renderToday();if(tab.dataset.tab==='editor')renderEditor();if(tab.dataset.tab==='settings')renderSettings()}});
+function changeWeek(direction) {
+  weekOffset += direction;
+  renderCalendar();
+  renderToday();
+}
 
-function renderAll(){renderCalendar();renderToday();renderEditor();renderSettings()}
+document.querySelectorAll('.tab').forEach(tab => {
+  tab.onclick = () => {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    tab.classList.add('active');
+    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+    
+    const target = document.getElementById(tab.dataset.tab);
+    if (target) target.style.display = 'block';
+    
+    if (tab.dataset.tab === 'calendar') renderCalendar();
+    if (tab.dataset.tab === 'today') renderToday();
+    if (tab.dataset.tab === 'editor') renderEditor();
+    if (tab.dataset.tab === 'settings') renderSettings();
+  };
+});
 
-openDB().then(()=>{console.log('IndexedDB opened');loadFromLocal()});
+function renderAll() {
+  renderCalendar();
+  renderToday();
+  renderEditor();
+  renderSettings();
+}
+
+// Инициализация при старте
+openDB().then(() => {
+  console.log('IndexedDB opened');
+  loadFromLocal();
+  renderAll();
+  requestStoragePersistence();
+});
 </script>
 
 <script>
-if('serviceWorker' in navigator){window.addEventListener('load',()=>{navigator.serviceWorker.register('/sw.js').then(reg=>console.log('SW ok')).catch(err=>console.log('SW err:',err))})}
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('./sw.js')
+      .then(() => console.log('SW ok'))
+      .catch(err => console.log('SW err:', err));
+  });
+}
 </script>
 </body>
 </html>
