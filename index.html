@@ -36,16 +36,19 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .week-setup button{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;padding:8px 16px;border:2px solid rgba(255,255,255,0.6);border-radius:20px;cursor:pointer;background:rgba(255,255,255,0.3);color:var(--text);transition:0.2s;opacity:0.7}
 .week-setup button:hover{opacity:0.9}
 .week-setup button.active{background:#fff;color:#6c5ce7;border-color:#fff;box-shadow:0 4px 12px rgba(108,92,231,0.3);opacity:1;font-weight:800}
-.tabs{display:flex;background:rgba(255,255,255,0.5);border-bottom:1px solid rgba(0,0,0,0.05)}
-.tab{flex:1;padding:14px;text-align:center;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;border:none;background:transparent;color:var(--muted);transition:all 0.2s;position:relative}
+.tabs{display:flex;background:rgba(255,255,255,0.5);border-bottom:1px solid rgba(0,0,0,0.05);overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.tabs::-webkit-scrollbar{display:none}
+.tab{flex:1;min-width:90px;padding:14px 12px;text-align:center;cursor:pointer;font-family:'Quicksand',sans-serif;font-size:14px;font-weight:700;border:none;background:transparent;color:var(--muted);transition:all 0.2s;position:relative;white-space:nowrap}
 .tab.active{color:#6c5ce7;background:rgba(255,255,255,0.8)}
-.tab.active::after{content:'';position:absolute;bottom:0;left:20%;right:20%;height:3px;background:#6c5ce7;border-radius:3px 3px 0 0}
+.tab.active::after{content:'';position:absolute;bottom:0;left:15%;right:15%;height:3px;background:#6c5ce7;border-radius:3px 3px 0 0}
 .content{padding:20px}
 .days-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
 .day-card{background:#fff;border-radius:var(--radius);padding:16px;border:1px solid #f0f0f5;box-shadow:0 4px 12px rgba(0,0,0,0.02)}
-.day-card h3{font-family:'Quicksand',sans-serif;color:#6c5ce7;font-size:16px;font-weight:700;margin-bottom:4px}
+.day-card h3{font-family:'Quicksand',sans-serif;color:#6c5ce7;font-size:16px;font-weight:700;margin-bottom:4px;display:flex;align-items:center;flex-wrap:wrap;gap:6px}
 .day-date{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #f0f0f5}
-.override-badge{display:inline-block;font-size:10px;font-weight:700;background:#ffd166;color:#4a4e69;padding:2px 8px;border-radius:10px;margin-left:8px}
+.override-badge{display:inline-block;font-size:10px;font-weight:700;background:#ffd166;color:#4a4e69;padding:2px 8px;border-radius:10px}
+.btn-restore-day{background:rgba(108,92,231,0.1);color:#6c5ce7;border:none;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:700;cursor:pointer;transition:0.2s}
+.btn-restore-day:hover{background:rgba(108,92,231,0.2)}
 .lesson{background:#f8f9fc;border-radius:12px;padding:14px;margin:10px 0;cursor:pointer;position:relative;transition:all 0.2s;border-left:4px solid var(--primary)}
 .lesson:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(149,157,165,0.15);background:#fff}
 .lesson.type-lecture{border-left-color:#a29bfe}
@@ -61,6 +64,7 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .lesson-markers{position:absolute;top:12px;right:12px;display:flex;gap:6px;flex-wrap:wrap}
 .marker{font-size:10px;font-weight:800;padding:3px 7px;border-radius:20px}
 .marker.hw{background:#fff3cd;color:#856404}
+.marker.hw-done{background:#d4edda;color:#155724}
 .marker.fl{background:#d4edda;color:#155724}
 .attendance-btns{display:flex;gap:4px;margin-top:8px;flex-wrap:wrap}
 .att-btn{flex:1;min-width:60px;padding:6px;border:2px solid #e9ecef;border-radius:8px;background:#fff;cursor:pointer;font-size:11px;font-weight:700;font-family:'Nunito',sans-serif;transition:all 0.2s}
@@ -106,8 +110,15 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .links-list,.files-list{margin-top:10px}
 .link-item,.file-item{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;margin:6px 0;border-radius:10px;background:#f8f9fc;border:1px solid #e9ecef}
 .link-item{border-left:3px solid var(--green)}
-.link-item a,.file-item a{color:#6c5ce7;text-decoration:none;word-break:break-all;flex:1;font-weight:600;font-size:14px}
-.mini-del{background:rgba(239,71,111,0.1);color:var(--danger);border:none;padding:6px 10px;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;margin-left:8px}
+.link-content{flex:1;min-width:0}
+.link-title{font-size:12px;font-weight:800;color:#6c5ce7;margin-bottom:2px}
+.link-anchor{color:var(--text);text-decoration:none;font-size:13px;font-weight:600;word-break:break-all;display:block}
+.link-anchor:hover{color:#6c5ce7;text-decoration:underline}
+.link-quick-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px}
+.link-tag-btn{background:#f0f0f5;border:1px solid #e2e2ea;border-radius:12px;padding:4px 10px;font-size:11px;font-weight:700;color:var(--text);cursor:pointer;font-family:'Nunito',sans-serif;transition:0.2s}
+.link-tag-btn:hover{background:#6c5ce7;color:#fff;border-color:#6c5ce7}
+.mini-del{background:rgba(239,71,111,0.1);color:var(--danger);border:none;padding:6px 10px;border-radius:8px;cursor:pointer;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;margin-left:8px;flex-shrink:0}
+.mini-del:hover{background:rgba(239,71,111,0.2)}
 .auth-screen{display:flex;justify-content:center;align-items:center;min-height:100vh;padding:20px}
 .auth-card{background:#fff;border-radius:24px;padding:40px;max-width:400px;width:100%;box-shadow:0 20px 60px rgba(0,0,0,0.1)}
 .auth-card h2{font-family:'Quicksand',sans-serif;color:#6c5ce7;font-size:24px;margin-bottom:8px;text-align:center}
@@ -123,7 +134,63 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
 .version-item button{padding:6px 12px;background:#6c5ce7;color:#fff;border:none;border-radius:8px;cursor:pointer;font-size:12px;font-weight:700}
 .info-banner{background:#f0f4ff;border-left:4px solid #6c5ce7;padding:12px 16px;border-radius:12px;margin-bottom:16px;font-size:13px;line-height:1.5;color:#4a4e69}
 .status-pill{display:inline-block;padding:2px 8px;border-radius:10px;font-size:11px;font-weight:700;background:#d4edda;color:#155724}
-@media(max-width:600px){body{padding:0;background:#fff}.container{border-radius:0;box-shadow:none;border:none}header h1{font-size:20px}.content{padding:16px}.days-grid{grid-template-columns:1fr}}
+
+/* Стили для страницы предметов и домашних заданий */
+.subjects-header-bar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;margin-bottom:14px}
+.subjects-search-box{flex:1;min-width:240px;position:relative}
+.subjects-search-box input{width:100%;padding:10px 16px 10px 36px;background:#f8f9fc;border:2px solid #e9ecef;border-radius:12px;font-family:'Nunito',sans-serif;font-size:14px;font-weight:600;color:var(--text);outline:none;transition:0.2s}
+.subjects-search-box input:focus{border-color:var(--primary);background:#fff;box-shadow:0 0 0 3px rgba(184,192,255,0.25)}
+.subjects-search-icon{position:absolute;left:12px;top:50%;transform:translateY(-50%);font-size:14px;color:var(--muted);pointer-events:none}
+.subjects-stats-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px}
+.stat-pill{background:#f8f9fc;border:1px solid #e9ecef;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;color:var(--text)}
+.stat-pill strong{color:#6c5ce7}
+.filter-chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.chip-btn{background:#f0f0f5;border:1px solid transparent;border-radius:20px;padding:6px 14px;font-size:12px;font-weight:700;color:var(--muted);cursor:pointer;font-family:'Nunito',sans-serif;transition:0.2s}
+.chip-btn:hover{background:#e5e5f0;color:var(--text)}
+.chip-btn.active{background:#6c5ce7;color:#fff;box-shadow:0 4px 10px rgba(108,92,231,0.25)}
+.subjects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+.subject-card{background:#fff;border-radius:var(--radius);padding:18px;border:1px solid #f0f0f5;box-shadow:0 4px 14px rgba(0,0,0,0.02);display:flex;flex-direction:column;justify-content:space-between;transition:all 0.2s}
+.subject-card:hover{transform:translateY(-2px);box-shadow:0 12px 28px rgba(149,157,165,0.1)}
+.subject-card h3{font-family:'Quicksand',sans-serif;font-size:17px;font-weight:700;color:var(--text);margin-bottom:6px;line-height:1.35}
+.subject-type-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}
+.subject-teacher-info{font-size:13px;color:var(--muted);font-weight:600;margin-bottom:10px;line-height:1.4}
+.next-class-banner{background:linear-gradient(135deg,rgba(108,92,231,0.06),rgba(142,197,252,0.12));border-left:3px solid #6c5ce7;border-radius:12px;padding:10px 12px;margin:10px 0}
+.next-class-title{font-size:10px;font-weight:800;color:#6c5ce7;text-transform:uppercase;letter-spacing:0.5px;margin-bottom:2px}
+.next-class-details{font-size:13px;font-weight:700;color:var(--text)}
+.next-class-room{font-size:12px;color:var(--muted);margin-top:2px}
+.subject-hw-section{margin-top:12px;padding-top:12px;border-top:1px dashed #e9ecef}
+.hw-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.hw-header-title{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px}
+.hw-list{display:flex;flex-direction:column;gap:6px}
+.hw-item{display:flex;align-items:flex-start;gap:10px;background:#f8f9fc;border:1px solid #edf0f7;border-radius:10px;padding:8px 10px;transition:all 0.2s}
+.hw-item:hover{background:#f1f3fa}
+.hw-item.completed{background:#f8faf9;opacity:0.75}
+.hw-item.completed .hw-text{text-decoration:line-through;color:var(--muted)}
+.hw-checkbox-wrapper{display:flex;align-items:center;margin-top:2px;cursor:pointer}
+.hw-checkbox-wrapper input{display:none}
+.hw-checkmark{width:18px;height:18px;border-radius:6px;border:2px solid #b8c0ff;display:flex;align-items:center;justify-content:center;transition:all 0.2s;background:#fff;flex-shrink:0}
+.hw-checkbox-wrapper input:checked + .hw-checkmark{background:#00b894;border-color:#00b894}
+.hw-checkbox-wrapper input:checked + .hw-checkmark::after{content:'✓';color:#fff;font-size:12px;font-weight:800}
+.hw-details{flex:1;min-width:0}
+.hw-text{font-size:13px;font-weight:600;color:var(--text);word-break:break-word;line-height:1.4}
+.hw-meta{display:flex;gap:6px;align-items:center;margin-top:4px;flex-wrap:wrap}
+.deadline-pill{font-size:10px;font-weight:700;padding:2px 7px;border-radius:8px;display:inline-block}
+.deadline-pill.status-next-class{background:#fff3cd;color:#856404;border:1px solid #ffeeba}
+.deadline-pill.status-overdue{background:#f8d7da;color:#721c24;border:1px solid #f5c6cb}
+.deadline-pill.status-urgent{background:#ffe8cc;color:#d9480f}
+.deadline-pill.status-soon{background:#e8f4f8;color:#0c5460}
+.deadline-pill.status-normal{background:#e9ecef;color:#495057}
+.deadline-pill.status-completed{background:#d4edda;color:#155724}
+.hw-del-btn{background:transparent;border:none;cursor:pointer;color:var(--muted);font-size:13px;padding:2px 4px;border-radius:6px;opacity:0.6;transition:0.2s;align-self:center}
+.hw-del-btn:hover{opacity:1;color:var(--danger);background:rgba(239,71,111,0.1)}
+.subject-links-box{margin-top:10px;display:flex;flex-direction:column;gap:4px}
+.subject-link-item{display:flex;justify-content:space-between;align-items:center;padding:6px 10px;background:#f8f9fc;border:1px solid #edf0f7;border-radius:8px;font-size:12px}
+.subject-link-item a{color:#6c5ce7;text-decoration:none;font-weight:700;flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;margin-right:8px}
+.next-class-prep-card{background:linear-gradient(135deg,#fdfbf7,#f0f4ff);border-radius:16px;padding:16px;margin-bottom:20px;border:2px solid #e0e7ff}
+.next-class-prep-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.next-class-prep-title{font-family:'Quicksand',sans-serif;font-size:16px;font-weight:700;color:#6c5ce7;display:flex;align-items:center;gap:6px}
+.single-del-box{background:rgba(239,71,111,0.06);border:1px dashed rgba(239,71,111,0.3);border-radius:12px;padding:12px;margin-top:12px}
+@media(max-width:600px){body{padding:0;background:#fff}.container{border-radius:0;box-shadow:none;border:none}header h1{font-size:20px}.content{padding:16px}.days-grid{grid-template-columns:1fr}.subjects-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -163,12 +230,14 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
   </header>
   <div class="tabs">
     <button class="tab active" data-tab="calendar">Календарь</button>
+    <button class="tab" data-tab="subjects">Предметы</button>
     <button class="tab" data-tab="today">Сегодня</button>
     <button class="tab" data-tab="editor">Расписание</button>
     <button class="tab" data-tab="settings">Настройки</button>
   </div>
   <div class="content">
     <div id="calendar" class="tab-content"><div class="days-grid" id="daysGrid"></div></div>
+    <div id="subjects" class="tab-content" style="display:none"><div id="subjectsContent"></div></div>
     <div id="today" class="tab-content" style="display:none"><div id="todayContent"></div></div>
     <div id="editor" class="tab-content" style="display:none"><div class="days-grid" id="editorGrid"></div></div>
     <div id="settings" class="tab-content" style="display:none"><div id="settingsContent"></div></div>
@@ -187,14 +256,31 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
       <div id="noteLessonInfo" style="font-size:15px;color:var(--text);line-height:1.6"></div>
     </div>
     <div class="modal-section">
-      <div class="modal-section-title">Домашнее задание</div>
-      <div class="form-group"><textarea id="noteHomework" placeholder="Заметки, дедлайны, задания..."></textarea></div>
+      <div class="modal-section-title">Домашние задания по предмету</div>
+      <div id="noteModalHwList" class="hw-list" style="margin-bottom:10px"></div>
+      <button type="button" class="btn btn-secondary btn-sm" onclick="openHwModalForCurrentLesson()">+ Добавить задание / дедлайн</button>
     </div>
     <div class="modal-section">
-      <div class="modal-section-title">Ссылки</div>
+      <div class="modal-section-title">Заметки к паре</div>
+      <div class="form-group"><textarea id="noteHomework" placeholder="Личные заметки, конспекты, комментарии..."></textarea></div>
+    </div>
+    <div class="modal-section">
+      <div class="modal-section-title">Ссылки и ресурсы</div>
       <div class="form-group">
+        <label>Примечание (что это за ссылка)</label>
+        <input type="text" id="newLinkTitle" placeholder="Например: Zoom-конференция, Google Диск, СДО...">
+        <div class="link-quick-tags">
+          <button type="button" class="link-tag-btn" onclick="setLinkTitlePreset('Zoom / Онлайн-пара')">💻 Zoom</button>
+          <button type="button" class="link-tag-btn" onclick="setLinkTitlePreset('Google Диск с материалами')">📁 Диск</button>
+          <button type="button" class="link-tag-btn" onclick="setLinkTitlePreset('СДО Самарского университета')">🎓 СДО</button>
+          <button type="button" class="link-tag-btn" onclick="setLinkTitlePreset('Чат группы')">💬 Чат</button>
+          <button type="button" class="link-tag-btn" onclick="setLinkTitlePreset('Конспект / Notion')">📝 Конспект</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>URL адрес ссылки</label>
         <input type="url" id="newLink" placeholder="https://...">
-        <button class="btn btn-secondary btn-sm" onclick="addLink()" style="margin-top:6px">+ Добавить ссылку</button>
+        <button type="button" class="btn btn-secondary btn-sm" onclick="addLink()" style="margin-top:8px">+ Добавить ссылку</button>
         <div id="linksList" class="links-list"></div>
       </div>
     </div>
@@ -205,9 +291,86 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
         <div id="filesList" class="files-list"></div>
       </div>
     </div>
+    <div class="modal-section" id="singleDelSection">
+      <div class="modal-section-title" style="color:var(--danger)">Управление парой на эту дату</div>
+      <p style="font-size:13px;color:var(--muted);margin-bottom:10px">Если пары в этот день не будет (праздник, отмена или перенос), вы можете убрать её только для этой конкретной даты. В другие недели расписание не изменится.</p>
+      <div id="singleDelPrompt">
+        <button type="button" class="btn btn-danger btn-block" onclick="showSingleDelConfirm()">🗑️ Удалить эту пару только на этот день</button>
+      </div>
+      <div id="singleDelConfirmBox" style="display:none" class="single-del-box">
+        <div style="font-size:13px;font-weight:700;color:var(--danger);margin-bottom:6px">Подтвердите удаление пары на этот день:</div>
+        <div style="font-size:13px;color:var(--text);margin-bottom:12px" id="singleDelConfirmText">Пара будет удалена только из расписания на эту дату.</div>
+        <div style="display:flex;gap:8px">
+          <button type="button" class="btn btn-danger btn-sm" onclick="executeDeleteSingleInstance()">Да, удалить на этот день</button>
+          <button type="button" class="btn btn-secondary btn-sm" onclick="hideSingleDelConfirm()">Отмена</button>
+        </div>
+      </div>
+    </div>
     <div class="modal-buttons">
       <button class="btn btn-secondary" onclick="closeNoteModal()">Отмена</button>
       <button class="btn btn-primary" onclick="saveNote()">Сохранить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Модалка добавления/редактирования ДЗ и дедлайна -->
+<div class="modal" id="hwModal">
+  <div class="modal-content">
+    <h2 id="hwModalTitle">Задание и дедлайн</h2>
+    <div class="modal-section">
+      <div class="form-group">
+        <label>Предмет</label>
+        <select id="hwModalSubjectSelect"></select>
+      </div>
+      <div class="form-group">
+        <label>Что нужно выполнить?</label>
+        <textarea id="hwModalText" placeholder="Например: Сделать лабораторную №2, подготовить доклад, решить задачи 3-7..."></textarea>
+      </div>
+      <div class="form-group">
+        <label>Дедлайн / Срок сдачи</label>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px">
+          <button type="button" class="link-tag-btn" id="btnHwPresetNextClass" onclick="applyHwPreset('next')">⚡ К следующей паре</button>
+          <button type="button" class="link-tag-btn" onclick="applyHwPreset('endOfWeek')">📅 До конца недели</button>
+          <button type="button" class="link-tag-btn" onclick="applyHwPreset('twoWeeks')">⏳ Через 2 недели</button>
+        </div>
+        <div style="display:flex;gap:8px">
+          <input type="date" id="hwModalDate" style="flex:2">
+          <input type="time" id="hwModalTime" value="23:59" style="flex:1">
+        </div>
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button class="btn btn-secondary" onclick="closeHwModal()">Отмена</button>
+      <button class="btn btn-primary" onclick="saveHomeworkModal()">Сохранить задание</button>
+      <button class="btn btn-danger" id="btnHwModalDelete" style="display:none" onclick="deleteHomeworkFromModal()">Удалить</button>
+    </div>
+  </div>
+</div>
+
+<!-- Модалка добавления ссылки к предмету -->
+<div class="modal" id="subjectLinkModal">
+  <div class="modal-content">
+    <h2 id="subjectLinkModalTitle">Добавить ссылку к предмету</h2>
+    <div class="modal-section">
+      <div class="form-group">
+        <label>Примечание (что это за ссылка)</label>
+        <input type="text" id="subjectLinkTitle" placeholder="Например: Google Диск с лекциями, Zoom, Чат...">
+        <div class="link-quick-tags">
+          <button type="button" class="link-tag-btn" onclick="setSubjectLinkTitlePreset('Zoom / Онлайн-пара')">💻 Zoom</button>
+          <button type="button" class="link-tag-btn" onclick="setSubjectLinkTitlePreset('Google Диск')">📁 Диск</button>
+          <button type="button" class="link-tag-btn" onclick="setSubjectLinkTitlePreset('СДО Самарского университета')">🎓 СДО</button>
+          <button type="button" class="link-tag-btn" onclick="setSubjectLinkTitlePreset('Чат группы')">💬 Чат</button>
+          <button type="button" class="link-tag-btn" onclick="setSubjectLinkTitlePreset('Конспект / Notion')">📝 Конспект</button>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>URL адрес ссылки</label>
+        <input type="url" id="subjectLinkUrl" placeholder="https://...">
+      </div>
+    </div>
+    <div class="modal-buttons">
+      <button class="btn btn-secondary" onclick="closeSubjectLinkModal()">Отмена</button>
+      <button class="btn btn-primary" onclick="saveSubjectLink()">Сохранить</button>
     </div>
   </div>
 </div>
@@ -271,6 +434,7 @@ header h1{font-family:'Quicksand',sans-serif;font-size:24px;font-weight:700;marg
     <div class="modal-buttons">
       <button class="btn btn-secondary" onclick="closeEditorModal()">Отмена</button>
       <button class="btn btn-primary" onclick="saveBaseLesson()">Сохранить</button>
+      <button class="btn btn-danger" id="btnDeleteBaseLesson" onclick="confirmDeleteBaseLesson()" style="display:none">Удалить пару</button>
     </div>
   </div>
 </div>
@@ -434,6 +598,7 @@ function getDefaultSchedule() {
 // ===== СОСТОЯНИЕ ПРИЛОЖЕНИЯ =====
 let currentUser = null, weekOffset = 0, weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR)), currentEnergy = null, saveTimeout = null;
 let schedule = getDefaultSchedule(), scheduleOverrides = {}, lessonNotes = {}, dailyReports = {}, attendance = {}, attendanceLimits = {}, versionHistory = [];
+let homeworkList = [], subjectDetails = {}, subjectsFilter = 'all', subjectsSearchQuery = '';
 
 function ensureScheduleStructure() {
   if (!schedule || typeof schedule !== 'object') schedule = { even: {}, odd: {} };
@@ -471,6 +636,50 @@ function getVersionsKey() {
   return currentUser ? `study_versions_${currentUser.uid}` : 'study_versions_guest';
 }
 
+// Миграция старых текстовых заметок ДЗ в структурированные задачи с дедлайнами
+function syncLegacyHomework() {
+  if (!Array.isArray(homeworkList)) homeworkList = [];
+  let changed = false;
+  Object.keys(lessonNotes).forEach(dateKey => {
+    const dayNotes = lessonNotes[dateKey];
+    if (!dayNotes || typeof dayNotes !== 'object') return;
+    Object.keys(dayNotes).forEach(lessonId => {
+      const note = dayNotes[lessonId];
+      if (note && note.homework && typeof note.homework === 'string') {
+        const text = note.homework.trim();
+        if (text) {
+          const legId = 'hw_leg_' + dateKey + '_' + lessonId;
+          const exists = homeworkList.some(h => h.id === legId || (h.legacyDateKey === dateKey && h.legacyLessonId === lessonId));
+          if (!exists) {
+            let subjName = '';
+            ['even', 'odd'].forEach(w => {
+              DAYS.forEach((_, d) => {
+                const l = (schedule[w]?.[d] || []).find(x => x.id === lessonId);
+                if (l && l.name) subjName = l.name;
+              });
+            });
+            homeworkList.push({
+              id: legId,
+              subject: subjName || 'Общее задание',
+              text,
+              deadlineDate: dateKey,
+              deadlineTime: '23:59',
+              targetDateKey: dateKey,
+              completed: false,
+              completedAt: null,
+              legacyDateKey: dateKey,
+              legacyLessonId: lessonId,
+              createdAt: Date.now()
+            });
+            changed = true;
+          }
+        }
+      }
+    });
+  });
+  if (changed) saveLocally();
+}
+
 // ===== СОХРАНЕНИЕ & СИНХРОНИЗАЦИЯ =====
 function saveLocally() {
   try {
@@ -478,6 +687,7 @@ function saveLocally() {
     const data = {
       schedule, scheduleOverrides, lessonNotes, dailyReports,
       attendance, attendanceLimits, weekAnchor,
+      homeworkList, subjectDetails,
       updatedAt
     };
     localStorage.setItem(getStorageKey(), JSON.stringify(data));
@@ -506,6 +716,7 @@ function saveToCloud() {
       await db.collection('users').doc(currentUser.uid).set({
         schedule, scheduleOverrides, lessonNotes, dailyReports,
         attendance, attendanceLimits, weekAnchor,
+        homeworkList, subjectDetails,
         updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
         updatedAtMs: localTs
       }, { merge: true });
@@ -531,6 +742,8 @@ function loadFromLocal() {
         attendance = data.attendance || {};
         attendanceLimits = data.attendanceLimits || {};
         weekAnchor = data.weekAnchor || weekAnchor;
+        homeworkList = Array.isArray(data.homeworkList) ? data.homeworkList : [];
+        subjectDetails = (data.subjectDetails && typeof data.subjectDetails === 'object') ? data.subjectDetails : {};
         loaded = true;
       }
     }
@@ -538,6 +751,7 @@ function loadFromLocal() {
       try { versionHistory = JSON.parse(rawV) || []; } catch(e) {}
     }
     ensureScheduleStructure();
+    syncLegacyHomework();
     
     // Если расписание пустое — заполняем базовое расписание Самарского университета
     if (!loaded || isScheduleEmpty()) {
@@ -595,11 +809,15 @@ function subscribeToCloud() {
         attendance = cloudData.attendance || {};
         attendanceLimits = cloudData.attendanceLimits || {};
         weekAnchor = cloudData.weekAnchor || weekAnchor;
+        if (Array.isArray(cloudData.homeworkList)) homeworkList = cloudData.homeworkList;
+        if (cloudData.subjectDetails && typeof cloudData.subjectDetails === 'object') subjectDetails = cloudData.subjectDetails;
         ensureScheduleStructure();
+        syncLegacyHomework();
 
         const toSave = {
           schedule, scheduleOverrides, lessonNotes, dailyReports,
           attendance, attendanceLimits, weekAnchor,
+          homeworkList, subjectDetails,
           updatedAt: cloudUpdatedAt || Date.now()
         };
         localStorage.setItem(getStorageKey(), JSON.stringify(toSave));
@@ -830,7 +1048,22 @@ function renderCalendar() {
     
     const card = document.createElement('div');
     card.className = 'day-card';
-    card.innerHTML = `<h3>${escapeHtml(day)}${isOverride ? '<span class="override-badge">ИЗМЕНЕНО</span>' : ''}</h3><div class="day-date">${escapeHtml(formatDate(date))}</div>`;
+    
+    let overrideHtml = '';
+    if (isOverride) {
+      overrideHtml = `
+        <span class="override-badge">ИЗМЕНЕНО</span>
+        <button type="button" class="btn-restore-day" onclick="resetDayOverride('${escapeHtml(dateKey)}')" title="Восстановить базовое расписание этого дня">Сбросить</button>
+      `;
+    }
+    
+    card.innerHTML = `
+      <h3>
+        <span>${escapeHtml(day)}</span>
+        ${overrideHtml}
+      </h3>
+      <div class="day-date">${escapeHtml(formatDate(date))}</div>
+    `;
     
     if (sorted.length === 0) {
       card.innerHTML += `<div class="empty">Нет пар</div>`;
@@ -841,8 +1074,18 @@ function renderCalendar() {
         const div = document.createElement('div');
         div.className = `lesson type-${lesson.type || 'lecture'}`;
         
+        // Поиск ДЗ для предмета этой пары
+        const sLower = (lesson.name || '').trim().toLowerCase();
+        const sHw = homeworkList.filter(h => (h.subject || '').trim().toLowerCase() === sLower);
+        const pendingHw = sHw.filter(h => !h.completed);
+        const doneHw = sHw.filter(h => h.completed);
+
         let markers = '';
-        if (note.homework) markers += '<span class="marker hw">ДЗ</span>';
+        if (pendingHw.length > 0) {
+          markers += `<span class="marker hw">⚡ ДЗ: ${pendingHw.length}</span>`;
+        } else if (doneHw.length > 0 || (note.homework && note.homework.trim())) {
+          markers += `<span class="marker hw-done">✓ ДЗ</span>`;
+        }
         if (note.files && note.files.length) markers += `<span class="marker fl">📎 ${note.files.length}</span>`;
         
         div.innerHTML = `
@@ -880,10 +1123,12 @@ async function setAttendance(dateKey, lessonId, subjectName, status) {
   attendance[dateKey][lessonId] = { status, subjectName: subjectName || '' };
   saveToCloud();
   renderCalendar();
+  renderSubjects();
 }
 
-// ===== МОДАЛКА ЗАМЕТОК =====
+// ===== МОДАЛКА ЗАМЕТОК К ПАРЕ =====
 let currentNoteLesson = null, currentNoteDateKey = '', editingNote = null;
+
 function openNoteModal(lesson, dateKey) {
   currentNoteLesson = lesson;
   currentNoteDateKey = dateKey;
@@ -904,6 +1149,10 @@ function openNoteModal(lesson, dateKey) {
 
   document.getElementById('noteHomework').value = editingNote.homework || '';
   document.getElementById('newLink').value = '';
+  document.getElementById('newLinkTitle').value = '';
+  
+  hideSingleDelConfirm();
+  renderNoteModalHomework();
   renderLinks();
   renderFiles();
   document.getElementById('noteModal').classList.add('active');
@@ -912,18 +1161,118 @@ function openNoteModal(lesson, dateKey) {
 function closeNoteModal() {
   document.getElementById('noteModal').classList.remove('active');
   editingNote = null;
+  hideSingleDelConfirm();
+}
+
+function openHwModalForCurrentLesson() {
+  if (!currentNoteLesson) return;
+  openHwModal(currentNoteLesson.name);
+  document.getElementById('hwModalDate').value = currentNoteDateKey;
+  if (currentNoteLesson.time) {
+    document.getElementById('hwModalTime').value = currentNoteLesson.time.split('-')[0].trim();
+  }
+}
+
+function renderNoteModalHomework() {
+  const container = document.getElementById('noteModalHwList');
+  if (!container || !currentNoteLesson) return;
+  const sLower = (currentNoteLesson.name || '').trim().toLowerCase();
+  const tasks = homeworkList.filter(h => (h.subject || '').trim().toLowerCase() === sLower);
+
+  if (tasks.length === 0) {
+    container.innerHTML = `<div style="font-size:12px;color:var(--muted);font-style:italic">Пока нет заданий по этому предмету</div>`;
+    return;
+  }
+
+  const nextLesson = getNextLessonForSubject(currentNoteLesson.name);
+  container.innerHTML = tasks.map(hw => {
+    const dStatus = getHomeworkDeadlineStatus(hw, nextLesson);
+    return `
+      <div class="hw-item ${hw.completed ? 'completed' : ''}">
+        <label class="hw-checkbox-wrapper" title="${hw.completed ? 'Снять отметку' : 'Отметить как выполненное'}">
+          <input type="checkbox" ${hw.completed ? 'checked' : ''} onchange="toggleHomeworkFromModal('${hw.id}')">
+          <span class="hw-checkmark"></span>
+        </label>
+        <div class="hw-details" style="cursor:pointer" onclick="openHwModal('${escapeHtml(currentNoteLesson.name)}', '${hw.id}')">
+          <div class="hw-text">${escapeHtml(hw.text)}</div>
+          <div class="hw-meta">
+            <span class="deadline-pill ${dStatus.statusClass}">${escapeHtml(dStatus.label)}</span>
+          </div>
+        </div>
+        <button type="button" class="hw-del-btn" title="Удалить задание" onclick="deleteHomeworkFromNoteModal('${hw.id}')">🗑️</button>
+      </div>
+    `;
+  }).join('');
+}
+
+function toggleHomeworkFromModal(id) {
+  toggleHomework(id);
+  renderNoteModalHomework();
+}
+
+function deleteHomeworkFromNoteModal(id) {
+  deleteHomework(id);
+  renderNoteModalHomework();
+}
+
+// Удаление пары единожды из расписания на дату
+function showSingleDelConfirm() {
+  document.getElementById('singleDelPrompt').style.display = 'none';
+  const box = document.getElementById('singleDelConfirmBox');
+  box.style.display = 'block';
+  const dateObj = new Date(currentNoteDateKey + 'T00:00:00');
+  document.getElementById('singleDelConfirmText').textContent = 
+    `Вы действительно хотите удалить пару «${currentNoteLesson.name}» только на ${formatDate(dateObj)}? В другие недели она останется в расписании.`;
+}
+
+function hideSingleDelConfirm() {
+  const box = document.getElementById('singleDelConfirmBox');
+  if (box) box.style.display = 'none';
+  const prompt = document.getElementById('singleDelPrompt');
+  if (prompt) prompt.style.display = 'block';
+}
+
+function executeDeleteSingleInstance() {
+  if (!currentNoteLesson || !currentNoteDateKey) return;
+  
+  if (!scheduleOverrides[currentNoteDateKey]) {
+    const dateObj = new Date(currentNoteDateKey + 'T00:00:00');
+    const { lessons } = getLessonsForDate(dateObj);
+    scheduleOverrides[currentNoteDateKey] = lessons.slice();
+  }
+  
+  scheduleOverrides[currentNoteDateKey] = scheduleOverrides[currentNoteDateKey].filter(l => l.id !== currentNoteLesson.id);
+  saveToCloud();
+  closeNoteModal();
+  renderAll();
+}
+
+function resetDayOverride(dateKey) {
+  const dateObj = new Date(dateKey + 'T00:00:00');
+  if (!confirm(`Восстановить базовое расписание на ${formatDate(dateObj)}?\nВсе отмененные и измененные в этот день пары вернутся к стандартному расписанию.`)) return;
+  delete scheduleOverrides[dateKey];
+  saveToCloud();
+  renderAll();
+}
+
+// Примечания к ссылкам и работа со ссылками
+function setLinkTitlePreset(title) {
+  document.getElementById('newLinkTitle').value = title;
+  document.getElementById('newLink').focus();
 }
 
 function addLink() {
   const url = document.getElementById('newLink').value.trim();
+  const title = document.getElementById('newLinkTitle').value.trim();
   if (!url) return;
   if (!/^https?:\/\//i.test(url)) {
     alert('Ссылка должна начинаться с http:// или https://');
     return;
   }
   editingNote.links = editingNote.links || [];
-  editingNote.links.push(url);
+  editingNote.links.push({ url, title });
   document.getElementById('newLink').value = '';
+  document.getElementById('newLinkTitle').value = '';
   renderLinks();
 }
 
@@ -935,22 +1284,36 @@ function removeLink(idx) {
 function renderLinks() {
   const list = document.getElementById('linksList');
   list.innerHTML = '';
-  (editingNote.links || []).forEach((url, i) => {
+  (editingNote.links || []).forEach((item, i) => {
+    const linkObj = typeof item === 'string' ? { url: item, title: '' } : item;
     const div = document.createElement('div');
     div.className = 'link-item';
     
+    const info = document.createElement('div');
+    info.className = 'link-content';
+    
+    if (linkObj.title) {
+      const titleEl = document.createElement('div');
+      titleEl.className = 'link-title';
+      titleEl.textContent = linkObj.title;
+      info.appendChild(titleEl);
+    }
+    
     const a = document.createElement('a');
-    a.href = sanitizeUrl(url);
+    a.href = sanitizeUrl(linkObj.url);
     a.target = '_blank';
     a.rel = 'noopener noreferrer';
-    a.textContent = url;
+    a.className = 'link-anchor';
+    a.textContent = linkObj.url;
+    info.appendChild(a);
     
     const btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'mini-del';
     btn.textContent = 'Удалить';
     btn.onclick = () => removeLink(i);
     
-    div.appendChild(a);
+    div.appendChild(info);
     div.appendChild(btn);
     list.appendChild(div);
   });
@@ -972,6 +1335,7 @@ async function renderFiles() {
     };
     
     const btn = document.createElement('button');
+    btn.type = 'button';
     btn.className = 'mini-del';
     btn.textContent = 'Удалить';
     btn.onclick = () => removeFile(f.id);
@@ -1022,7 +1386,584 @@ async function saveNote() {
   closeNoteModal();
 }
 
-// ===== ДНЕВНОЙ ОТЧЁТ (БЕЗОПАСНЫЙ С XSS-ЭКРАНИРОВАНИЕМ) =====
+// ===== ДЕДЛАЙНЫ И СЛЕДУЮЩАЯ ПАРА =====
+function getNextLessonForSubject(subjectName, fromDate = new Date()) {
+  if (!subjectName) return null;
+  const targetName = subjectName.trim().toLowerCase();
+  const start = new Date(fromDate);
+  start.setHours(0, 0, 0, 0);
+
+  for (let offset = 0; offset <= 28; offset++) {
+    const checkDate = new Date(start);
+    checkDate.setDate(start.getDate() + offset);
+    const dateKey = formatDateKey(checkDate);
+    const { lessons } = getLessonsForDate(checkDate);
+    
+    const sorted = lessons.slice().sort((a, b) => (a.slot || 0) - (b.slot || 0));
+    for (const l of sorted) {
+      if ((l.name || '').trim().toLowerCase() === targetName) {
+        if (offset === 0 && l.time) {
+          const parts = l.time.split('-')[0].trim().split(':');
+          if (parts.length === 2) {
+            const h = parseInt(parts[0], 10);
+            const m = parseInt(parts[1], 10);
+            const lessonTime = new Date(checkDate);
+            lessonTime.setHours(h, m, 0, 0);
+            if (lessonTime <= fromDate) continue;
+          }
+        }
+        
+        let relativeText = '';
+        if (offset === 0) relativeText = 'Сегодня';
+        else if (offset === 1) relativeText = 'Завтра';
+        else if (offset === 2) relativeText = 'Послезавтра';
+        else relativeText = `через ${offset} дн.`;
+        
+        const dayIdx = checkDate.getDay() === 0 ? 6 : checkDate.getDay() - 1;
+        const dayName = DAYS[dayIdx] || '';
+
+        return {
+          date: checkDate,
+          dateKey,
+          dayName,
+          lesson: l,
+          offsetDays: offset,
+          relativeText,
+          formattedDate: formatDate(checkDate)
+        };
+      }
+    }
+  }
+  return null;
+}
+
+function getHomeworkDeadlineStatus(hw, nextLesson) {
+  if (hw.completed) {
+    return { label: '✓ Выполнено', statusClass: 'status-completed' };
+  }
+  
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  
+  if (nextLesson && (hw.deadlineDate === nextLesson.dateKey || hw.targetDateKey === nextLesson.dateKey)) {
+    return {
+      label: `⚡ К следующей паре (${nextLesson.relativeText})`,
+      statusClass: 'status-next-class'
+    };
+  }
+
+  if (hw.deadlineDate) {
+    const d = new Date(hw.deadlineDate + 'T00:00:00');
+    const diffDays = Math.round((d.getTime() - today.getTime()) / (1000 * 60 * 60 * 24));
+    
+    if (diffDays < 0) {
+      return { label: `⚠️ Просрочено (${formatDate(d)})`, statusClass: 'status-overdue' };
+    } else if (diffDays === 0) {
+      return { label: '⚡ Сегодня (до ' + (hw.deadlineTime || '23:59') + ')', statusClass: 'status-urgent' };
+    } else if (diffDays === 1) {
+      return { label: '⏰ Завтра', statusClass: 'status-soon' };
+    } else {
+      return { label: `📅 До ${formatDate(d)}`, statusClass: 'status-normal' };
+    }
+  }
+
+  return { label: 'Без дедлайна', statusClass: 'status-normal' };
+}
+
+function toggleHomework(id) {
+  const item = homeworkList.find(h => h.id === id);
+  if (!item) return;
+  item.completed = !item.completed;
+  item.completedAt = item.completed ? Date.now() : null;
+  saveToCloud();
+  renderAll();
+}
+
+function deleteHomework(id) {
+  if (!confirm('Удалить это задание?')) return;
+  homeworkList = homeworkList.filter(h => h.id !== id);
+  saveToCloud();
+  renderAll();
+}
+
+// Модалка ДЗ
+let currentEditingHwId = null;
+function openHwModal(preselectedSubject = null, hwId = null) {
+  currentEditingHwId = hwId;
+  const select = document.getElementById('hwModalSubjectSelect');
+  select.innerHTML = '';
+  
+  const subjects = getAllSubjects();
+  subjects.forEach(s => {
+    const opt = document.createElement('option');
+    opt.value = s.name;
+    opt.textContent = s.name;
+    select.appendChild(opt);
+  });
+
+  const btnDel = document.getElementById('btnHwModalDelete');
+  if (hwId) {
+    const hw = homeworkList.find(h => h.id === hwId);
+    if (hw) {
+      document.getElementById('hwModalTitle').textContent = 'Редактировать задание';
+      select.value = hw.subject;
+      document.getElementById('hwModalText').value = hw.text || '';
+      document.getElementById('hwModalDate').value = hw.deadlineDate || '';
+      document.getElementById('hwModalTime').value = hw.deadlineTime || '23:59';
+      btnDel.style.display = 'block';
+    }
+  } else {
+    document.getElementById('hwModalTitle').textContent = 'Новое задание';
+    if (preselectedSubject && subjects.some(s => s.name === preselectedSubject)) {
+      select.value = preselectedSubject;
+    }
+    document.getElementById('hwModalText').value = '';
+    btnDel.style.display = 'none';
+    
+    const subj = select.value;
+    const nextLesson = getNextLessonForSubject(subj);
+    if (nextLesson) {
+      document.getElementById('hwModalDate').value = nextLesson.dateKey;
+      const lessonSlotTime = nextLesson.lesson.time ? nextLesson.lesson.time.split('-')[0].trim() : '08:00';
+      document.getElementById('hwModalTime').value = lessonSlotTime;
+    } else {
+      document.getElementById('hwModalDate').value = formatDateKey(new Date());
+      document.getElementById('hwModalTime').value = '23:59';
+    }
+  }
+
+  updateNextClassPresetBtn();
+  select.onchange = () => updateNextClassPresetBtn();
+  document.getElementById('hwModal').classList.add('active');
+}
+
+function updateNextClassPresetBtn() {
+  const subj = document.getElementById('hwModalSubjectSelect').value;
+  const nextLesson = getNextLessonForSubject(subj);
+  const btn = document.getElementById('btnHwPresetNextClass');
+  if (nextLesson) {
+    btn.style.display = 'inline-block';
+    btn.textContent = `⚡ К следующей паре (${nextLesson.relativeText}, ${nextLesson.formattedDate})`;
+  } else {
+    btn.style.display = 'none';
+  }
+}
+
+function applyHwPreset(type) {
+  const subj = document.getElementById('hwModalSubjectSelect').value;
+  if (type === 'next') {
+    const nextLesson = getNextLessonForSubject(subj);
+    if (nextLesson) {
+      document.getElementById('hwModalDate').value = nextLesson.dateKey;
+      const t = nextLesson.lesson.time ? nextLesson.lesson.time.split('-')[0].trim() : '08:00';
+      document.getElementById('hwModalTime').value = t;
+    }
+  } else if (type === 'endOfWeek') {
+    const now = new Date();
+    const dow = now.getDay();
+    const daysToSunday = dow === 0 ? 0 : 7 - dow;
+    const sunday = new Date(now);
+    sunday.setDate(now.getDate() + daysToSunday);
+    document.getElementById('hwModalDate').value = formatDateKey(sunday);
+    document.getElementById('hwModalTime').value = '23:59';
+  } else if (type === 'twoWeeks') {
+    const target = new Date();
+    target.setDate(target.getDate() + 14);
+    document.getElementById('hwModalDate').value = formatDateKey(target);
+    document.getElementById('hwModalTime').value = '23:59';
+  }
+}
+
+function closeHwModal() {
+  document.getElementById('hwModal').classList.remove('active');
+  currentEditingHwId = null;
+}
+
+function saveHomeworkModal() {
+  const subject = document.getElementById('hwModalSubjectSelect').value;
+  const text = document.getElementById('hwModalText').value.trim();
+  const deadlineDate = document.getElementById('hwModalDate').value;
+  const deadlineTime = document.getElementById('hwModalTime').value || '23:59';
+
+  if (!text) return alert('Пожалуйста, введите описание задания');
+
+  const nextLesson = getNextLessonForSubject(subject);
+  const targetDateKey = (nextLesson && nextLesson.dateKey === deadlineDate) ? nextLesson.dateKey : deadlineDate;
+
+  if (currentEditingHwId) {
+    const hw = homeworkList.find(h => h.id === currentEditingHwId);
+    if (hw) {
+      hw.subject = subject;
+      hw.text = text;
+      hw.deadlineDate = deadlineDate;
+      hw.deadlineTime = deadlineTime;
+      hw.targetDateKey = targetDateKey;
+    }
+  } else {
+    homeworkList.push({
+      id: 'hw_' + generateId(),
+      subject,
+      text,
+      deadlineDate,
+      deadlineTime,
+      targetDateKey,
+      completed: false,
+      completedAt: null,
+      createdAt: Date.now()
+    });
+  }
+
+  saveToCloud();
+  renderAll();
+  closeHwModal();
+  
+  if (document.getElementById('noteModal').classList.contains('active')) {
+    renderNoteModalHomework();
+  }
+}
+
+function deleteHomeworkFromModal() {
+  if (!currentEditingHwId) return;
+  if (!confirm('Удалить это задание?')) return;
+  homeworkList = homeworkList.filter(h => h.id !== currentEditingHwId);
+  saveToCloud();
+  renderAll();
+  closeHwModal();
+  if (document.getElementById('noteModal').classList.contains('active')) {
+    renderNoteModalHomework();
+  }
+}
+
+// Ссылки уровня предмета
+let currentSubjectForLink = null;
+function openSubjectLinkModal(subjectName) {
+  currentSubjectForLink = subjectName;
+  document.getElementById('subjectLinkModalTitle').textContent = `Ссылка для «${subjectName}»`;
+  document.getElementById('subjectLinkTitle').value = '';
+  document.getElementById('subjectLinkUrl').value = '';
+  document.getElementById('subjectLinkModal').classList.add('active');
+}
+
+function closeSubjectLinkModal() {
+  document.getElementById('subjectLinkModal').classList.remove('active');
+  currentSubjectForLink = null;
+}
+
+function setSubjectLinkTitlePreset(title) {
+  document.getElementById('subjectLinkTitle').value = title;
+  document.getElementById('subjectLinkUrl').focus();
+}
+
+function saveSubjectLink() {
+  const title = document.getElementById('subjectLinkTitle').value.trim();
+  const url = document.getElementById('subjectLinkUrl').value.trim();
+  if (!url) return alert('Введите адрес ссылки');
+  if (!/^https?:\/\//i.test(url)) return alert('Ссылка должна начинаться с http:// или https://');
+  
+  if (!subjectDetails[currentSubjectForLink]) {
+    subjectDetails[currentSubjectForLink] = { links: [] };
+  }
+  if (!Array.isArray(subjectDetails[currentSubjectForLink].links)) {
+    subjectDetails[currentSubjectForLink].links = [];
+  }
+  subjectDetails[currentSubjectForLink].links.push({ title, url });
+  saveToCloud();
+  renderSubjects();
+  closeSubjectLinkModal();
+}
+
+function removeSubjectLink(subjectName, idx) {
+  if (!confirm('Удалить эту ссылку?')) return;
+  if (subjectDetails[subjectName] && Array.isArray(subjectDetails[subjectName].links)) {
+    subjectDetails[subjectName].links.splice(idx, 1);
+    saveToCloud();
+    renderSubjects();
+  }
+}
+
+// ===== СТРАНИЦА ПРЕДМЕТОВ =====
+function getAllSubjects() {
+  const map = {};
+  
+  function addLesson(l) {
+    if (!l || !l.name) return;
+    const name = l.name.trim();
+    if (!map[name]) {
+      map[name] = {
+        name,
+        types: new Set(),
+        teachers: new Set(),
+        rooms: new Set(),
+        count: 0
+      };
+    }
+    if (l.type) map[name].types.add(l.type);
+    if (l.teacher) map[name].teachers.add(l.teacher.trim());
+    if (l.room) map[name].rooms.add(l.room.trim());
+    map[name].count++;
+  }
+
+  ['even', 'odd'].forEach(w => {
+    DAYS.forEach((_, d) => {
+      (schedule[w]?.[d] || []).forEach(addLesson);
+    });
+  });
+
+  Object.keys(scheduleOverrides).forEach(dateKey => {
+    (scheduleOverrides[dateKey] || []).forEach(addLesson);
+  });
+
+  Object.keys(subjectDetails).forEach(name => {
+    if (!map[name]) {
+      map[name] = {
+        name,
+        types: new Set(),
+        teachers: new Set(),
+        rooms: new Set(),
+        count: 0
+      };
+    }
+  });
+
+  return Object.values(map).map(s => ({
+    name: s.name,
+    types: Array.from(s.types),
+    teachers: Array.from(s.teachers).filter(Boolean),
+    rooms: Array.from(s.rooms).filter(Boolean),
+    count: s.count,
+    details: subjectDetails[s.name] || { links: [], notes: '' }
+  })).sort((a, b) => a.name.localeCompare(b.name, 'ru'));
+}
+
+function getSubjectStats(subjectName) {
+  const lower = subjectName.trim().toLowerCase();
+  let present = 0, absent = 0, sick = 0;
+  
+  Object.keys(attendance).forEach(dateKey => {
+    const dayAtt = attendance[dateKey];
+    if (dayAtt && typeof dayAtt === 'object') {
+      Object.keys(dayAtt).forEach(lessonId => {
+        const item = dayAtt[lessonId];
+        if (item && (item.subjectName || '').trim().toLowerCase() === lower) {
+          if (item.status === 'present') present++;
+          else if (item.status === 'absent') absent++;
+          else if (item.status === 'sick') sick++;
+        }
+      });
+    }
+  });
+
+  const total = present + absent + sick;
+  const rate = total > 0 ? Math.round((present / total) * 100) : null;
+
+  const subjectHw = homeworkList.filter(h => (h.subject || '').trim().toLowerCase() === lower);
+  const pendingHw = subjectHw.filter(h => !h.completed);
+  const completedHw = subjectHw.filter(h => h.completed);
+
+  return { present, absent, sick, total, rate, subjectHw, pendingHw, completedHw };
+}
+
+function renderSubjects() {
+  const container = document.getElementById('subjectsContent');
+  if (!container) return;
+  
+  const subjects = getAllSubjects();
+  const allHw = homeworkList;
+  const pendingHwCount = allHw.filter(h => !h.completed).length;
+  
+  let nextClassHwCount = 0;
+  subjects.forEach(s => {
+    const nextLesson = getNextLessonForSubject(s.name);
+    if (nextLesson) {
+      const urgent = allHw.filter(h => !h.completed && (h.subject || '').trim().toLowerCase() === s.name.trim().toLowerCase() && (h.deadlineDate === nextLesson.dateKey || h.targetDateKey === nextLesson.dateKey));
+      nextClassHwCount += urgent.length;
+    }
+  });
+
+  const query = (subjectsSearchQuery || '').trim().toLowerCase();
+  const filtered = subjects.filter(s => {
+    if (query) {
+      const matchName = s.name.toLowerCase().includes(query);
+      const matchTeacher = s.teachers.some(t => t.toLowerCase().includes(query));
+      if (!matchName && !matchTeacher) return false;
+    }
+    
+    const stats = getSubjectStats(s.name);
+    if (subjectsFilter === 'next') {
+      const nextLesson = getNextLessonForSubject(s.name);
+      if (!nextLesson) return false;
+      return stats.pendingHw.some(h => h.deadlineDate === nextLesson.dateKey || h.targetDateKey === nextLesson.dateKey);
+    } else if (subjectsFilter === 'pending') {
+      return stats.pendingHw.length > 0;
+    } else if (subjectsFilter === 'done') {
+      return stats.subjectHw.length > 0 && stats.pendingHw.length === 0;
+    }
+    return true;
+  });
+
+  container.innerHTML = `
+    <div class="subjects-header-bar">
+      <div class="subjects-search-box">
+        <span class="subjects-search-icon">🔍</span>
+        <input type="text" placeholder="Поиск предмета или преподавателя..." value="${escapeHtml(subjectsSearchQuery)}" oninput="onSubjectsSearch(this.value)">
+      </div>
+      <button class="btn btn-primary btn-sm" onclick="openHwModal(null)">+ Добавить задание</button>
+    </div>
+
+    <div class="subjects-stats-bar">
+      <div class="stat-pill">Всего предметов: <strong>${subjects.length}</strong></div>
+      <div class="stat-pill">Активных заданий: <strong>${pendingHwCount}</strong></div>
+      ${nextClassHwCount > 0 ? `<div class="stat-pill" style="border-color:#ffd166;background:#fffdf5">⚡ К следующей паре: <strong style="color:#d9480f">${nextClassHwCount}</strong></div>` : ''}
+    </div>
+
+    <div class="filter-chips">
+      <button class="chip-btn ${subjectsFilter === 'all' ? 'active' : ''}" onclick="setSubjectsFilter('all')">Все (${subjects.length})</button>
+      <button class="chip-btn ${subjectsFilter === 'next' ? 'active' : ''}" onclick="setSubjectsFilter('next')">⚡ К следующей паре (${subjects.filter(s => {
+        const nl = getNextLessonForSubject(s.name);
+        return nl && getSubjectStats(s.name).pendingHw.some(h => h.deadlineDate === nl.dateKey || h.targetDateKey === nl.dateKey);
+      }).length})</button>
+      <button class="chip-btn ${subjectsFilter === 'pending' ? 'active' : ''}" onclick="setSubjectsFilter('pending')">📝 С активным ДЗ (${subjects.filter(s => getSubjectStats(s.name).pendingHw.length > 0).length})</button>
+      <button class="chip-btn ${subjectsFilter === 'done' ? 'active' : ''}" onclick="setSubjectsFilter('done')">✓ Все сдано (${subjects.filter(s => {
+        const st = getSubjectStats(s.name);
+        return st.subjectHw.length > 0 && st.pendingHw.length === 0;
+      }).length})</button>
+    </div>
+
+    <div class="subjects-grid" id="subjectsGrid"></div>
+  `;
+
+  const grid = container.querySelector('#subjectsGrid');
+  if (filtered.length === 0) {
+    grid.innerHTML = `<div class="empty" style="grid-column:1/-1">Предметы не найдены</div>`;
+    return;
+  }
+
+  filtered.forEach(subject => {
+    const nextLesson = getNextLessonForSubject(subject.name);
+    const stats = getSubjectStats(subject.name);
+    const card = document.createElement('div');
+    card.className = 'subject-card';
+
+    const typeBadges = subject.types.map(t => {
+      const typeClass = t === 'lecture' ? 'type-lecture' : (t === 'lab' ? 'type-lab' : 'type-practice');
+      return `<span class="lesson-type ${typeClass}">${escapeHtml(TYPE_LABELS[t] || t)}</span>`;
+    }).join(' ');
+
+    const teacherStr = subject.teachers.length > 0 ? subject.teachers.join(', ') : 'Преподаватель не указан';
+    const roomStr = subject.rooms.length > 0 ? subject.rooms.join(' · ') : '';
+
+    let nextLessonHtml = '';
+    if (nextLesson) {
+      nextLessonHtml = `
+        <div class="next-class-banner">
+          <div class="next-class-title">⏰ СЛЕДУЮЩАЯ ПАРА · ${escapeHtml(nextLesson.relativeText)}</div>
+          <div class="next-class-details">${escapeHtml(nextLesson.dayName)}, ${escapeHtml(nextLesson.formattedDate)} · ${escapeHtml(nextLesson.lesson.time || '')}</div>
+          <div class="next-class-room">${nextLesson.lesson.room ? escapeHtml(nextLesson.lesson.room) + ' · ' : ''}${escapeHtml(TYPE_LABELS[nextLesson.lesson.type] || '')}</div>
+        </div>
+      `;
+    } else {
+      nextLessonHtml = `
+        <div class="next-class-banner" style="background:#f8f9fc;border-left-color:var(--muted)">
+          <div class="next-class-title" style="color:var(--muted)">⏰ Ближайшие пары</div>
+          <div class="next-class-details" style="font-size:12px;color:var(--muted)">В ближайшие 4 недели пар нет в расписании</div>
+        </div>
+      `;
+    }
+
+    let hwItemsHtml = '';
+    if (stats.subjectHw.length === 0) {
+      hwItemsHtml = `<div style="font-size:12px;color:var(--muted);font-style:italic;padding:6px 0">Нет домашних заданий</div>`;
+    } else {
+      const sortedHw = stats.subjectHw.slice().sort((a, b) => {
+        if (a.completed !== b.completed) return a.completed ? 1 : -1;
+        return (a.deadlineDate || '9999').localeCompare(b.deadlineDate || '9999');
+      });
+
+      hwItemsHtml = sortedHw.map(hw => {
+        const dStatus = getHomeworkDeadlineStatus(hw, nextLesson);
+        return `
+          <div class="hw-item ${hw.completed ? 'completed' : ''}" id="hw_item_${hw.id}">
+            <label class="hw-checkbox-wrapper" title="${hw.completed ? 'Снять отметку' : 'Отметить как выполненное'}">
+              <input type="checkbox" ${hw.completed ? 'checked' : ''} onchange="toggleHomework('${hw.id}')">
+              <span class="hw-checkmark"></span>
+            </label>
+            <div class="hw-details" onclick="openHwModal('${escapeHtml(subject.name)}', '${hw.id}')" style="cursor:pointer">
+              <div class="hw-text">${escapeHtml(hw.text)}</div>
+              <div class="hw-meta">
+                <span class="deadline-pill ${dStatus.statusClass}">${escapeHtml(dStatus.label)}</span>
+              </div>
+            </div>
+            <button type="button" class="hw-del-btn" title="Удалить" onclick="deleteHomework('${hw.id}')">🗑️</button>
+          </div>
+        `;
+      }).join('');
+    }
+
+    const links = (subject.details && subject.details.links) || [];
+    let linksHtml = '';
+    if (links.length > 0) {
+      linksHtml = `
+        <div class="subject-links-box">
+          ${links.map((link, idx) => {
+            const lObj = typeof link === 'string' ? { url: link, title: '' } : link;
+            return `
+              <div class="subject-link-item">
+                <a href="${sanitizeUrl(lObj.url)}" target="_blank" rel="noopener noreferrer" title="${escapeHtml(lObj.url)}">
+                  🔗 <strong>${escapeHtml(lObj.title || 'Ссылка')}</strong>
+                </a>
+                <button type="button" class="mini-del" style="padding:2px 6px;margin-left:4px;font-size:11px" onclick="removeSubjectLink('${escapeHtml(subject.name)}', ${idx})">×</button>
+              </div>
+            `;
+          }).join('')}
+        </div>
+      `;
+    }
+
+    const attHtml = stats.total > 0
+      ? `<span class="stat-pill" style="font-size:11px;padding:3px 8px">📊 Посещаемость: <strong>${stats.rate}%</strong> (${stats.present}/${stats.total})</span>`
+      : '';
+
+    card.innerHTML = `
+      <div>
+        <div class="subject-type-tags">${typeBadges}</div>
+        <h3>${escapeHtml(subject.name)}</h3>
+        <div class="subject-teacher-info">👨‍🏫 ${escapeHtml(teacherStr)}${roomStr ? ' · 📍 ' + escapeHtml(roomStr) : ''}</div>
+        ${nextLessonHtml}
+        ${attHtml ? `<div style="margin:6px 0 10px">${attHtml}</div>` : ''}
+        
+        <div class="subject-hw-section">
+          <div class="hw-header">
+            <span class="hw-header-title">Домашние задания (${stats.pendingHw.length} активн.)</span>
+            <button type="button" class="btn btn-secondary btn-sm" style="padding:4px 8px;font-size:11px" onclick="openHwModal('${escapeHtml(subject.name)}')">+ ДЗ</button>
+          </div>
+          <div class="hw-list">${hwItemsHtml}</div>
+        </div>
+
+        <div style="margin-top:12px;padding-top:8px;border-top:1px dashed #f0f0f5">
+          <div class="hw-header">
+            <span class="hw-header-title">Ссылки и материалы</span>
+            <button type="button" class="btn btn-secondary btn-sm" style="padding:4px 8px;font-size:11px" onclick="openSubjectLinkModal('${escapeHtml(subject.name)}')">+ Ссылка</button>
+          </div>
+          ${linksHtml || '<div style="font-size:12px;color:var(--muted);font-style:italic">Ссылок пока нет</div>'}
+        </div>
+      </div>
+    `;
+
+    grid.appendChild(card);
+  });
+}
+
+function onSubjectsSearch(val) {
+  subjectsSearchQuery = val;
+  renderSubjects();
+}
+
+function setSubjectsFilter(filter) {
+  subjectsFilter = filter;
+  renderSubjects();
+}
+
+// ===== ДНЕВНОЙ ОТЧЁТ & ЧТО СДЕЛАТЬ К СЛЕДУЮЩЕЙ ПАРЕ =====
 let currentReportDateKey = '';
 function renderToday() {
   const today = new Date();
@@ -1031,10 +1972,64 @@ function renderToday() {
   const dayName = DAYS[dayIdx] || 'Суббота';
   const report = dailyReports[todayKey];
   const container = document.getElementById('todayContent');
-  
+  container.innerHTML = '';
+
+  // Блок "Что нужно выполнить к следующей паре"
+  const subjects = getAllSubjects();
+  const urgentTasks = [];
+  subjects.forEach(s => {
+    const nextLesson = getNextLessonForSubject(s.name);
+    if (nextLesson) {
+      const tasks = homeworkList.filter(h => !h.completed && (h.subject || '').trim().toLowerCase() === s.name.trim().toLowerCase());
+      tasks.forEach(task => {
+        urgentTasks.push({ task, nextLesson });
+      });
+    }
+  });
+
+  urgentTasks.sort((a, b) => a.nextLesson.date.getTime() - b.nextLesson.date.getTime());
+
+  if (urgentTasks.length > 0) {
+    const prepDiv = document.createElement('div');
+    prepDiv.className = 'next-class-prep-card';
+    prepDiv.innerHTML = `
+      <div class="next-class-prep-header">
+        <div class="next-class-prep-title">⚡ Что нужно выполнить к следующей паре</div>
+        <span class="status-pill" style="background:#fff3cd;color:#856404;font-size:12px">${urgentTasks.length} ${urgentTasks.length === 1 ? 'задание' : 'заданий'}</span>
+      </div>
+      <div class="hw-list">
+        ${urgentTasks.map(item => {
+          const hw = item.task;
+          const nl = item.nextLesson;
+          const dStatus = getHomeworkDeadlineStatus(hw, nl);
+          return `
+            <div class="hw-item">
+              <label class="hw-checkbox-wrapper" title="Отметить как выполненное">
+                <input type="checkbox" onchange="toggleHomework('${hw.id}')">
+                <span class="hw-checkmark"></span>
+              </label>
+              <div class="hw-details" onclick="openHwModal('${escapeHtml(hw.subject)}', '${hw.id}')" style="cursor:pointer">
+                <div style="font-size:11px;font-weight:800;color:#6c5ce7;margin-bottom:2px">
+                  ${escapeHtml(hw.subject)} · к ${escapeHtml(nl.relativeText)} (${escapeHtml(nl.formattedDate)}, ${escapeHtml(nl.lesson.time || '')})
+                </div>
+                <div class="hw-text">${escapeHtml(hw.text)}</div>
+                <div class="hw-meta">
+                  <span class="deadline-pill ${dStatus.statusClass}">${escapeHtml(dStatus.label)}</span>
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('')}
+      </div>
+    `;
+    container.appendChild(prepDiv);
+  }
+
+  // Секция отчёта
+  const reportSectionDiv = document.createElement('div');
   if (!report) {
-    container.innerHTML = `
-      <div style="text-align:center;padding:40px 20px">
+    reportSectionDiv.innerHTML = `
+      <div style="text-align:center;padding:30px 20px;background:#fff;border-radius:18px;border:1px solid #f0f0f5">
         <h3 style="font-family:'Quicksand';color:#6c5ce7;font-size:18px;margin-bottom:12px">Ещё нет отчёта за сегодня</h3>
         <p style="color:var(--muted);margin-bottom:20px">Заполни отчёт, чтобы отслеживать продуктивность и успехи</p>
         <button class="btn btn-primary" onclick="openReportModal('${escapeHtml(todayKey)}')">Заполнить отчёт</button>
@@ -1046,7 +2041,7 @@ function renderToday() {
     }
     energyHtml += '</div>';
 
-    container.innerHTML = `
+    reportSectionDiv.innerHTML = `
       <div class="report-card">
         <div class="report-date">${escapeHtml(dayName)}, ${escapeHtml(formatDate(today))}</div>
         <div class="report-section"><div class="report-label">Уровень энергии</div>${energyHtml}</div>
@@ -1065,6 +2060,7 @@ function renderToday() {
         </div>
       </div>`;
   }
+  container.appendChild(reportSectionDiv);
 
   const dates = getWeekDates(weekOffset);
   const weekReports = dates.map(d => ({ date: d, key: formatDateKey(d), report: dailyReports[formatDateKey(d)] })).filter(r => r.report);
@@ -1164,7 +2160,7 @@ async function deleteReportByKey(dateKey) {
   renderToday();
 }
 
-// ===== РЕДАКТОР РАСПИСАНИЯ =====
+// ===== РЕДАКТОР БАЗОВОГО РАСПИСАНИЯ =====
 let currentEditorDayIdx = null, currentEditorWeekType = null, currentEditorLessonId = null, editingBaseLesson = null;
 
 function renderEditor() {
@@ -1197,13 +2193,7 @@ function renderEditor() {
             <div class="lesson-name">${escapeHtml(lesson.name || 'Без названия')}</div>
             <div class="lesson-teacher">${escapeHtml(lesson.teacher || '')}${lesson.room ? ' · ' + escapeHtml(lesson.room) : ''}</div>
             <div class="lesson-type">${escapeHtml(TYPE_LABELS[lesson.type || 'lecture'] || 'Пара')}</div>
-            <button class="mini-del-btn" style="opacity:1;position:static;margin-top:6px;background:rgba(239,71,111,0.1);color:#ef476f;border:none;padding:4px 10px;border-radius:8px;cursor:pointer;font-family:'Nunito';font-size:12px;font-weight:700">Удалить</button>
           `;
-          
-          div.querySelector('.mini-del-btn').onclick = (e) => {
-            e.stopPropagation();
-            deleteBaseLesson(weekType, dayIdx, lesson.id);
-          };
           div.onclick = () => openEditorModal(weekType, dayIdx, lesson.id);
           card.appendChild(div);
         });
@@ -1237,6 +2227,10 @@ function openEditorModal(weekType, dayIdx, lessonId) {
   document.getElementById('lessonName').value = editingBaseLesson.name || '';
   document.getElementById('lessonTeacher').value = editingBaseLesson.teacher || '';
   document.getElementById('lessonRoom').value = editingBaseLesson.room || '';
+  
+  const delBtn = document.getElementById('btnDeleteBaseLesson');
+  if (delBtn) delBtn.style.display = lessonId ? 'block' : 'none';
+  
   document.getElementById('editorModal').classList.add('active');
 }
 
@@ -1268,17 +2262,22 @@ async function saveBaseLesson() {
     }
   }
   saveToCloud();
-  renderEditor();
-  renderCalendar();
+  renderAll();
+  closeEditorModal();
+}
+
+function confirmDeleteBaseLesson() {
+  if (!editingBaseLesson || !editingBaseLesson.name) return;
+  const weekLabel = currentEditorWeekType === 'even' ? 'чётных' : 'нечётных';
+  if (!confirm(`Вы действительно хотите удалить пару «${editingBaseLesson.name}» из базового расписания?\nОна будет удалена для всех ${weekLabel} недель.`)) return;
+  deleteBaseLesson(currentEditorWeekType, currentEditorDayIdx, currentEditorLessonId);
   closeEditorModal();
 }
 
 async function deleteBaseLesson(weekType, dayIdx, lessonId) {
-  if (!confirm('Удалить эту пару из расписания?')) return;
   schedule[weekType][dayIdx] = schedule[weekType][dayIdx].filter(l => l.id !== lessonId);
   saveToCloud();
-  renderEditor();
-  renderCalendar();
+  renderAll();
 }
 
 // ===== НАСТРОЙКИ & РЕЗЕРВНОЕ КОПИРОВАНИЕ =====
@@ -1316,7 +2315,7 @@ function renderSettings() {
     </div>
     
     <p style="margin-top:20px;color:var(--muted);font-size:14px;line-height:1.6;background:#f8f9fc;padding:16px;border-radius:12px;border-left:4px solid var(--primary)">
-      Регулярный экспорт в JSON гарантирует 100% сохранность ваших заметок и посещаемости даже при полной переустановке браузера или смене устройства.
+      Регулярный экспорт в JSON гарантирует 100% сохранность ваших заметок, домашних заданий и посещаемости даже при полной переустановке браузера или смене устройства.
     </p>
   `;
 }
@@ -1338,6 +2337,7 @@ function exportData() {
   const data = {
     schedule, scheduleOverrides, lessonNotes, dailyReports,
     attendance, attendanceLimits, weekAnchor,
+    homeworkList, subjectDetails,
     exportedAt: new Date().toISOString()
   };
   const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
@@ -1358,7 +2358,6 @@ function importData(e) {
       const data = JSON.parse(ev.target.result);
       if (!data || typeof data !== 'object') throw new Error('Некорректный формат файла');
       
-      // Безопасная валидация полей импорта
       if (data.schedule && typeof data.schedule === 'object') schedule = data.schedule;
       if (data.scheduleOverrides && typeof data.scheduleOverrides === 'object') scheduleOverrides = data.scheduleOverrides;
       if (data.lessonNotes && typeof data.lessonNotes === 'object') lessonNotes = data.lessonNotes;
@@ -1366,8 +2365,11 @@ function importData(e) {
       if (data.attendance && typeof data.attendance === 'object') attendance = data.attendance;
       if (data.attendanceLimits && typeof data.attendanceLimits === 'object') attendanceLimits = data.attendanceLimits;
       if (data.weekAnchor && typeof data.weekAnchor === 'object') weekAnchor = data.weekAnchor;
+      if (Array.isArray(data.homeworkList)) homeworkList = data.homeworkList;
+      if (data.subjectDetails && typeof data.subjectDetails === 'object') subjectDetails = data.subjectDetails;
       
       ensureScheduleStructure();
+      syncLegacyHomework();
       saveToCloud();
       renderAll();
       alert('Данные успешно импортированы!');
@@ -1379,7 +2381,7 @@ function importData(e) {
 }
 
 async function clearAllData() {
-  if (!confirm('Удалить ВСЕ данные расписания и заметок?')) return;
+  if (!confirm('Удалить ВСЕ данные расписания, предметов и заметок?')) return;
   if (!confirm('Это действие необратимо. У вас есть резервная копия?')) return;
   schedule = { even: {}, odd: {} };
   scheduleOverrides = {};
@@ -1387,6 +2389,8 @@ async function clearAllData() {
   dailyReports = {};
   attendance = {};
   attendanceLimits = {};
+  homeworkList = [];
+  subjectDetails = {};
   weekAnchor = JSON.parse(JSON.stringify(DEFAULT_WEEK_ANCHOR));
   ensureScheduleStructure();
   saveToCloud();
@@ -1404,46 +2408,69 @@ function restoreVersion(idx) {
   attendance = v.data.attendance || {};
   attendanceLimits = v.data.attendanceLimits || {};
   weekAnchor = v.data.weekAnchor || DEFAULT_WEEK_ANCHOR;
+  homeworkList = Array.isArray(v.data.homeworkList) ? v.data.homeworkList : [];
+  subjectDetails = (v.data.subjectDetails && typeof v.data.subjectDetails === 'object') ? v.data.subjectDetails : {};
   ensureScheduleStructure();
+  syncLegacyHomework();
   saveToCloud();
   renderAll();
   alert('Версия восстановлена!');
 }
 
-// ===== НАВИГАЦИЯ =====
+// ===== НАВИГАЦИЯ & СОХРАНЕНИЕ СТЕЙТОВ ВКЛАДОК И НЕДЕЛЬ =====
 function changeWeek(direction) {
   weekOffset += direction;
+  try { sessionStorage.setItem('study_week_offset', String(weekOffset)); } catch(e) {}
   renderCalendar();
+  renderSubjects();
   renderToday();
+}
+
+function switchTab(tabName) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tabName));
+  document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
+  
+  const target = document.getElementById(tabName);
+  if (target) target.style.display = 'block';
+  
+  try { localStorage.setItem('study_active_tab', tabName); } catch(e) {}
+  
+  if (tabName === 'calendar') renderCalendar();
+  if (tabName === 'subjects') renderSubjects();
+  if (tabName === 'today') renderToday();
+  if (tabName === 'editor') renderEditor();
+  if (tabName === 'settings') renderSettings();
 }
 
 document.querySelectorAll('.tab').forEach(tab => {
   tab.onclick = () => {
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-    tab.classList.add('active');
-    document.querySelectorAll('.tab-content').forEach(c => c.style.display = 'none');
-    
-    const target = document.getElementById(tab.dataset.tab);
-    if (target) target.style.display = 'block';
-    
-    if (tab.dataset.tab === 'calendar') renderCalendar();
-    if (tab.dataset.tab === 'today') renderToday();
-    if (tab.dataset.tab === 'editor') renderEditor();
-    if (tab.dataset.tab === 'settings') renderSettings();
+    switchTab(tab.dataset.tab);
   };
 });
 
 function renderAll() {
   renderCalendar();
+  renderSubjects();
   renderToday();
   renderEditor();
   renderSettings();
 }
 
-// Инициализация при старте
+// Инициализация при старте с восстановлением активного стейта
 openDB().then(() => {
   console.log('IndexedDB opened');
+  try {
+    const savedOffset = sessionStorage.getItem('study_week_offset');
+    if (savedOffset !== null && !isNaN(parseInt(savedOffset, 10))) {
+      weekOffset = parseInt(savedOffset, 10);
+    }
+  } catch(e) {}
+  
   loadFromLocal();
+  
+  const savedTab = localStorage.getItem('study_active_tab') || 'calendar';
+  switchTab(savedTab);
+  
   renderAll();
   requestStoragePersistence();
 });
